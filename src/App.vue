@@ -23,4 +23,8 @@ html, body {
   overflow-x: hidden;
   font-family: $main-font;
 }
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
 </style>

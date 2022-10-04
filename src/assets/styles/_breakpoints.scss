@@ -1,13 +1,13 @@
-$r-mobile-s: "(min-width: 420px)";
-$r-mobile-l: "(min-width: 540px)";
-$r-tablet: "(min-width: 768px)";
-$r-laptop-s: "(min-width: 1024px)";
-$r-laptop-m: "(min-width: 1200px)";
-$r-laptop-xl: "(min-width: 1500px)";
+$r-min-xs: "(min-width: 420px)";
+$r-min-s: "(min-width: 540px)";
+$r-min-m: "(min-width: 768px)";
+$r-min-l: "(min-width: 1024px)";
+$r-min-xl: "(min-width: 1200px)";
+$r-min-xxl: "(min-width: 1500px)";
 
-$r-max-mobile-s: "(max-width: 419px)";
-$r-max-mobile-l: "(max-width: 539px)";
-$r-max-tablet: "(max-width: 767px)";
-$r-max-laptop-s: "(max-width: 1023px)";
-$r-max-laptop-m: "(max-width: 1199px)";
-$r-max-laptop-xl: "(max-width: 1499px)";
+$r-max-xs: "(max-width: 419px)";
+$r-max-s: "(max-width: 539px)";
+$r-max-m: "(max-width: 767px)";
+$r-max-l: "(max-width: 1023px)";
+$r-max-xl: "(max-width: 1199px)";
+$r-max-xxl: "(max-width: 1499px)";

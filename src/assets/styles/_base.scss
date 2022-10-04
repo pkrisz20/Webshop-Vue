@@ -9,16 +9,21 @@
 }
 
 .wrapper {
-    padding: 0 15px;
-    width: $wrapper;
-    margin: 0 auto;
+    padding: 0 30px;
+    width: 100%;
+
+    @media #{$r-min-xl} {
+        padding: 0 15px;
+        max-width: $wrapper;
+        margin: 0 auto;
+    }
 }
 
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
 
-ul {
+ol, ul {
     list-style: none;
     padding: 0;
 }
@@ -41,5 +46,3 @@ textarea {
     border: none;
     outline: none;
 }
-
-//TODO: befejezni
