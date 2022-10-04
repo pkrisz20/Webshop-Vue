@@ -1,9 +1,13 @@
 <template>
   <header class="header">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <!-- <button class="btn">Button</button> -->
+    <div class="wrapper">
+      <div class="nav">
+        <router-link to="/">Home</router-link>
+        <router-link to="/about">About</router-link>
+      </div>
     </div>
+    <!-- <input type="text" /> -->
   </header>
 </template>
 
@@ -14,15 +18,30 @@ export default {
 </script>
 
 <style scoped lang="scss">
-#nav {
-  padding: 30px;
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  width: 100%;
+  padding: 30px 0;
+  background-color: $c-green-theme;
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+  .btn {
+    @include btn($c-green-theme, $c-white, $c-warning);
+  }
 
-    &.router-link-exact-active {
-      color: #42b983;
+  .nav {
+    @include flexBox();
+
+    a {
+      font-weight: bold;
+      color: $c-1;
+      margin: 0 15px;
+
+      &.router-link-exact-active {
+        color: $c-white;
+      }
     }
   }
 }
