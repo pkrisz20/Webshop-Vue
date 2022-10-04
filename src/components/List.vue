@@ -1,17 +1,17 @@
 <template>
-    <div class="list">
-        <div class="list_card">
+    <div class="wrapper">
+        <div class="list">
             <div class="list_card_image">
-                <img alt="moviepicture" src="../images/vue.png">
+                <img alt="moviepicture" src="../assets/images/logo.png">
             </div>
             <div class="list_card_image">
-                <img alt="moviepicture" src="../images/vue.png">
+                <img alt="moviepicture" src="../assets/images/logo.png">
             </div>
             <div class="list_card_image">
-                <img alt="moviepicture" src="../images/vue.png">
+                <img alt="moviepicture" src="../assets/images/logo.png">
             </div>
             <div class="list_card_image">
-                <img alt="moviepicture" src="../images/vue.png">
+                <img alt="moviepicture" src="../assets/images/logo.png">
             </div>
         </div>
     </div>
@@ -25,7 +25,6 @@
 
 <style lang="scss" scoped>
 .list {
-    padding-top: 80px;
     @include gridBox();
 }
 </style>

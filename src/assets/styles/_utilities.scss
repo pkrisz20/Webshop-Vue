@@ -1,0 +1,35 @@
+@media #{$r-laptop-m} {
+    .desktop-show {
+        display: block !important;
+    }
+
+    .desktop-hide {
+        display: none !important;
+    }
+
+    .mobile-show {
+        display: none;
+    }
+
+    .mobile-hide {
+        display: block;
+    }
+}
+
+@media #{$r-max-laptop-m} {
+    .desktop-show {
+        display: none;
+    }
+
+    .desktop-hide {
+        display: block;
+    }
+
+    .mobile-show {
+        display: block !important;
+    }
+
+    .mobile-hide {
+        display: none !important;
+    }
+}
