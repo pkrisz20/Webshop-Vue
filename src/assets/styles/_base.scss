@@ -8,6 +8,11 @@
     outline: none;
 }
 
+*::selection {
+    background-color: $c-theme;
+    color: $c-white;
+}
+
 .wrapper {
     padding: 0 30px;
     width: 100%;

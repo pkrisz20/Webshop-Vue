@@ -25,10 +25,10 @@ export default {
   z-index: 99;
   width: 100%;
   padding: 30px 0;
-  background-color: $c-green-theme;
+  background-color: $c-theme;
 
   .btn {
-    @include btn($c-green-theme, $c-white, $c-warning);
+    @include btn($c-theme, $c-white, $c-warning);
   }
 
   .nav {
