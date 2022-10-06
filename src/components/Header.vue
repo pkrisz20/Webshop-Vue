@@ -1,13 +1,11 @@
 <template>
   <header class="header">
-    <!-- <button class="btn">Button</button> -->
     <div class="wrapper">
       <div class="nav">
         <router-link to="/">Home</router-link>
         <router-link to="/about">About</router-link>
       </div>
     </div>
-    <!-- <input type="text" /> -->
   </header>
 </template>
 
