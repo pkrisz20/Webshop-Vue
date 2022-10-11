@@ -8,7 +8,10 @@ import actions from "./actions";
 import mutations from "./mutations";
 
 export default new Vuex.Store({
-  state: {},
+  state: {
+    notifications: [],
+    haveToWait: false,
+  },
   getters: getters,
   mutations: mutations,
   actions: actions

@@ -1,17 +1,47 @@
 <template>
-  <div id="app">
+  <div id="app" :style="{ 'padding-top': headerHeight + 'px' }" :class="[{ 'disable-interactions' : this.$store.state.haveToWait }]">
     <Header />
     <router-view />
+    <div v-if="this.$store.state.haveToWait" class="warning-to-wait">You have to wait a few seconds before you make any interactions again!</div>
+    <button @click="addNotification()">ADD NOTIFICATION</button>
+    <button @click="addNotification1()">ADD NOTIFICATION</button>
+    <button @click="addNotification2()">ADD NOTIFICATION</button>
+    <button @click="addNotification3()">ADD NOTIFICATION</button>
+    <NotificationsList />
   </div>
 </template>
 
 <script>
 import Header from "@/components/Header.vue";
+import NotificationsList from "@/components/NotificationsList.vue";
 
 export default {
   name: "App",
   components: {
-    Header
+    Header,
+    NotificationsList
+  },
+  data() {
+    return {
+      headerHeight: 0
+    }
+  },
+  methods: {
+    addNotification() {
+      this.$store.dispatch("addNotification", { type: "success", message: "Success message" });
+    },
+    addNotification1() {
+      this.$store.dispatch("addNotification", { type: "error", message: "An error is occured" });
+    },
+    addNotification2() {
+      this.$store.dispatch("addNotification", { type: "warning", message: "A warning message" });
+    },
+    addNotification3() {
+      this.$store.dispatch("addNotification", { message: "A info message" });
+    },
+  },
+  mounted() {
+    this.headerHeight = this.gSelector(".header").offsetHeight;
   }
 }
 </script>
@@ -26,5 +56,22 @@ html, body {
 
 html:focus-within {
   scroll-behavior: smooth;
+}
+
+.disable-interactions {
+  pointer-events: none;
+}
+
+.warning-to-wait {
+  @include absoluteCenter();
+  z-index: 99;
+  text-align: center;
+  background-color: $c-warning;
+  color: $c-white;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 15px 20px;
+  border-radius: 3px;
+  box-shadow: $base-box-shadow;
 }
 </style>

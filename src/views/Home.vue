@@ -53,7 +53,6 @@ export default {
 
 <style lang="scss">
 .home {
-  padding-top: 80px;
   min-height: 100vh;
 
   .mytabs {

@@ -42,6 +42,9 @@ Vue.mixin({
       const compactNumberFormatter = new Intl.NumberFormat(undefined, { notation: "compact" });
       return compactNumberFormatter.format(number);
     },
+    createUniqueID () {
+      return (Math.random().toString(36) + Date.now().toString(36)).substring(2);
+    },
   }
 });
 

@@ -10,9 +10,3 @@ export default {
   name: "About",
 };
 </script>
-
-<style lang="scss">
-.about {
-  padding-top: 80px;
-}
-</style>
