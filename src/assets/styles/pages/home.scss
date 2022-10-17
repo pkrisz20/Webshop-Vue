@@ -1,0 +1,110 @@
+.home {
+    min-height: 100vh;
+  
+    .mytabs {
+      .tabs-title {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+  
+      .tabs {
+        @include flexBox();
+        flex-direction: column;
+  
+        &_header {
+          width: 100%;
+  
+          &__list {
+            @include flexBox();
+            background-color: $c-d;
+            width: 100%;
+  
+            &-item {
+              margin: 0 20px;
+              cursor: pointer;
+              font-weight: 700;
+              font-size: 20px;
+              color: $c-3;
+              padding: 20px 30px;
+              transition: .2s ease-in-out;
+              position: relative;
+  
+              &::after {
+                position: absolute;
+                content: "";
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: -20px;
+                width: 0; 
+                height: 0; 
+                border-left: 20px solid transparent;
+                border-right: 20px solid transparent;
+                border-top: 20px solid $c-theme;
+                opacity: 0;
+                transition: all .2s ease-in-out;
+              }
+  
+              &:hover::after, &.is-active::after {
+                opacity: 1;
+              }
+  
+              &:hover, &.is-active {
+                background-color: $c-theme;
+                color: $c-white;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .section-name {
+      .VueCarousel-slide {
+        picture {
+          @include paddingBottom(350, 300);
+        }
+      }
+    }
+
+    .articles-carousel {
+      .header_title {
+        margin-bottom: 40px;
+      }
+
+      .VueCarousel-navigation-button {
+        i {
+          font-size: 30px;
+          color: $c-3;
+        }
+      }
+
+      &-article {
+        padding: 0 5px;
+
+        &_image {
+          picture {
+            @include paddingBottom(100, 130);
+          }
+        }
+        &_title {
+          font-size: 20px;
+          color: $c-6;
+          margin: 15px 0;
+        }
+        &_description {
+          font-size: 16px;
+          color: $c-3;
+          text-align: justify;
+          margin: 15px 0;
+        }
+        &_btn {
+          @include btn($c-a, $c-dark-theme);
+
+          &:hover {
+            background-color: $c-theme;
+            color: $c-white;
+          }
+        }
+      }
+    }
+  }

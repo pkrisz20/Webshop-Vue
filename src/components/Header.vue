@@ -1,10 +1,10 @@
 <template>
-  <header class="header">
+  <header class="header" :class="{ sticky: scrollPosition > 0 }">
     <div class="wrapper">
-      <div class="nav">
+      <nav class="nav">
         <router-link to="/">Home</router-link>
         <router-link to="/about">About</router-link>
-      </div>
+      </nav>
     </div>
   </header>
 </template>
@@ -12,6 +12,19 @@
 <script>
 export default {
   name: "Header",
+  data() {
+    return {
+      scrollPosition: 0,
+    }
+  },
+  methods: {
+    updateScroll() {
+        this.scrollPosition = window.scrollY;
+    },
+  },
+  mounted() {
+    window.addEventListener('scroll', this.updateScroll);
+  }
 };
 </script>
 
@@ -23,7 +36,9 @@ export default {
   z-index: 99;
   width: 100%;
   padding: 30px 0;
+  height: 70px;
   background-color: $c-theme;
+  transition: .3s ease-in-out;
 
   .btn {
     @include btn($c-theme, $c-white, $c-warning);
@@ -42,5 +57,10 @@ export default {
       }
     }
   }
+}
+
+.sticky {
+  background: $c-skyblue;
+  height: 60px;
 }
 </style>

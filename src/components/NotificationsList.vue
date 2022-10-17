@@ -1,5 +1,5 @@
 <template>
-    <div class="notifications-list">
+    <div class="notifications-list" v-if="notifications.length > 0">
         <NotificationMessage v-for="(item, index) in notifications" :key="index" :type="item.type" :content="item.message" :ID="item.id" />
     </div>
 </template>
@@ -31,5 +31,7 @@ import { mapState } from "vuex";
         width: 350px;
         height: auto;
         overflow: hidden;
+        @include flexBox("flex-start");
+        flex-direction: column;
     }
 </style>

@@ -1,12 +1,12 @@
 <template>
-  <div id="app" :style="{ 'padding-top': headerHeight + 'px' }" :class="[{ 'disable-interactions' : this.$store.state.haveToWait }]">
+  <div id="app" :class="[{ 'disable-interactions' : this.$store.state.haveToWait }]">
     <Header />
-    <router-view />
+    <router-view style="padding-top: 70px" />
     <div v-if="this.$store.state.haveToWait" class="warning-to-wait">You have to wait a few seconds before you make any interactions again!</div>
-    <button @click="addNotification()">ADD NOTIFICATION</button>
+    <!-- <button @click="addNotification()">ADD NOTIFICATION</button>
     <button @click="addNotification1()">ADD NOTIFICATION</button>
     <button @click="addNotification2()">ADD NOTIFICATION</button>
-    <button @click="addNotification3()">ADD NOTIFICATION</button>
+    <button @click="addNotification3()">ADD NOTIFICATION</button> -->
     <NotificationsList />
   </div>
 </template>
@@ -21,28 +21,20 @@ export default {
     Header,
     NotificationsList
   },
-  data() {
-    return {
-      headerHeight: 0
-    }
-  },
-  methods: {
-    addNotification() {
-      this.$store.dispatch("addNotification", { type: "success", message: "Success message" });
-    },
-    addNotification1() {
-      this.$store.dispatch("addNotification", { type: "error", message: "An error is occured" });
-    },
-    addNotification2() {
-      this.$store.dispatch("addNotification", { type: "warning", message: "A warning message" });
-    },
-    addNotification3() {
-      this.$store.dispatch("addNotification", { message: "A info message" });
-    },
-  },
-  mounted() {
-    this.headerHeight = this.gSelector(".header").offsetHeight;
-  }
+  // methods: {
+  //   addNotification() {
+  //     this.$store.dispatch("addNotification", { type: "success", message: "Success message" });
+  //   },
+  //   addNotification1() {
+  //     this.$store.dispatch("addNotification", { type: "error", message: "An error is occured An error is occured An error is occured An error is occured An error is occured" });
+  //   },
+  //   addNotification2() {
+  //     this.$store.dispatch("addNotification", { type: "warning", message: "A warning message" });
+  //   },
+  //   addNotification3() {
+  //     this.$store.dispatch("addNotification", { message: "A info message" });
+  //   },
+  // },
 }
 </script>
 

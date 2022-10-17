@@ -1,36 +1,79 @@
 <template>
   <div class="home">
-    <h1>This is a Home page</h1>
-    <List />
+    <div class="wrapper">    
+      <BlockTitle title="Articles" subtitle="Here begins the list" />
+      <ArticlesList />
+    </div>
 
     <section class="mytabs">
       <div class="wrapper">
 
-      <h1 class="tabs-title">Here is the tabs section title</h1>
+      <BlockTitle title="Tabs" subtitle="Here begins the tabs section" />
         <Tabs class="tabs">
           <Tab v-for="(tabItem, index) in this.tabContent" :key="index" :name="tabItem.title" :selected="tabItem.selected">
             <p>{{ tabItem.text }}</p>
           </Tab>
         </Tabs>
+        <ul>
+          <li v-for="(item, index) in this.randomFact" :key="index">{{ item }}</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section-name">
+      <div class="wrapper">
+        <BlockTitle title="Images" subtitle="Here begins the images section" />
+        <Carousel :navigation="true" :pagination="true" :responsive="[[540, 1], [768, 2], [1200, 3]]">
+          <slide v-for="(product, index) in products" :key="index">
+            <picture>
+              <img alt="moviepicture" :src="getImage(product)">
+            </picture>
+          </slide>
+        </Carousel>
+      </div>
+    </section>
+
+    <section class="articles-carousel">
+      <div class="wrapper">
+        <BlockTitle title="Products"/>
+        <Carousel :navigation="true" :pagination="false" :responsive="[[320, 1], [540, 2], [768, 3], [1200, 4]]">
+          <slide class="articles-carousel-article" v-for="(article, index) in articles" :key="index">
+            <div class="articles-carousel-article_image">
+              <picture>
+                <img alt="moviepicture" :src="getImage(article.image)">
+              </picture>
+            </div>
+            <h2 class="articles-carousel-article_title">{{ article.title }}</h2>
+            <p class="articles-carousel-article_description">{{ article.desc }}</p>
+            <button class="articles-carousel-article_btn"><i class="fas fa-shopping-cart"></i> ADD TO CART</button>
+          </slide>
+        </Carousel>
       </div>
     </section>
   </div>
 </template>
 
 <script>
-import List from "@/components/List.vue";
+import ArticlesList from "@/components/ArticlesList.vue";
 import Tabs from "@/components/Tabs.vue";
 import Tab from "@/components/Tab.vue";
+import BlockTitle from "@/components/BlockTitle.vue";
+import Carousel from "@/components/Carousel.vue";
+import { Slide } from "vue-carousel";
 
 export default {
   name: "Home",
   components: {
-    List,
+    BlockTitle,
+    ArticlesList,
     Tab,
-    Tabs
+    Tabs,
+    Carousel,
+    Slide
   },
   data() {
     return {
+      randomFact: [],
       tabContent: [
         {
           title: "Web",
@@ -45,71 +88,78 @@ export default {
           title: "Responsive",
           text: "Text 3 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam, similique libero? Odit corporis magnam cupiditate iusto, sequi tenetur voluptatibus autem assumenda! Ea quo reiciendis ipsam aliquam consequatur, neque non eius"
         },
+      ],
+      products: [
+        "example.jpg",
+        "example.jpg",
+        "example.jpg",
+        "example.jpg",
+        "example.jpg",
+        "example.jpg",
+      ],
+      articles: [
+        {
+          title: "Article title",
+          image: "example.jpg",
+          desc: "Description to the article and the long text which is at the below of the article card"
+        },
+        {
+          title: "Article title",
+          image: "example.jpg",
+          desc: "Description to the article and the long text which is at the below of the article card"
+        },
+        {
+          title: "Article title",
+          image: "example.jpg",
+          desc: "Description to the article and the long text which is at the below of the article card"
+        },
+        {
+          title: "Article title",
+          image: "example.jpg",
+          desc: "Description to the article and the long text which is at the below of the article card"
+        },
+        {
+          title: "Article title",
+          image: "example.jpg",
+          desc: "Description to the article and the long text which is at the below of the article card"
+        },
+        {
+          title: "Article title",
+          image: "example.jpg",
+          desc: "Description to the article and the long text which is at the below of the article card"
+        },
+        {
+          title: "Article title",
+          image: "example.jpg",
+          desc: "Description to the article and the long text which is at the below of the article card"
+        },
       ]
     }
+  },
+  methods: {
+    async getFact() {
+      await this.$http.get("https://meowfacts.herokuapp.com", {
+        params: {
+          count: 2,
+        }
+      })
+      .then(response => {
+        if (response.status == 200) this.randomFact = response.data.data;
+      })
+      .catch(err => {
+        if (err.response.status >= 500 && err.response.status <= 599) console.log("Something went wrong");
+      });
+    },
+    getImage(image) {
+      return require(`../assets/images/${image}`);
+    },
+  },
+  mounted() {
+    this.getFact();
   }
 };
 </script>
 
 <style lang="scss">
-.home {
-  min-height: 100vh;
-
-  .mytabs {
-    .tabs-title {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .tabs {
-      @include flexBox();
-      flex-direction: column;
-
-      &_header {
-        width: 100%;
-
-        &__list {
-          @include flexBox();
-          background-color: $c-d;
-          width: 100%;
-
-          &-item {
-            margin: 0 20px;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 20px;
-            color: $c-3;
-            padding: 20px 30px;
-            transition: .2s ease-in-out;
-            position: relative;
-
-            &::after {
-              position: absolute;
-              content: "";
-              left: 50%;
-              transform: translateX(-50%);
-              bottom: -20px;
-              width: 0; 
-              height: 0; 
-              border-left: 20px solid transparent;
-              border-right: 20px solid transparent;
-              border-top: 20px solid $c-theme;
-              opacity: 0;
-              transition: all .2s ease-in-out;
-            }
-
-            &:hover::after, &.is-active::after {
-              opacity: 1;
-            }
-
-            &:hover, &.is-active {
-              background-color: $c-theme;
-              color: $c-white;
-            }
-          }
-        }
-      }
-    }
-  }
-}
+  @import "@/assets/styles/pages/home.scss";
 </style>
