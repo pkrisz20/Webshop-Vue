@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import ArticlesList from "@/components/ArticlesList.vue";
+import ArticlesList from "@/components/articles/ArticlesList.vue";
 import Tabs from "@/components/Tabs.vue";
 import Tab from "@/components/Tab.vue";
 import BlockTitle from "@/components/BlockTitle.vue";

@@ -1,40 +1,15 @@
 <template>
-  <div id="app" :class="[{ 'disable-interactions' : this.$store.state.haveToWait }]">
-    <Header />
-    <router-view style="padding-top: 70px" />
-    <div v-if="this.$store.state.haveToWait" class="warning-to-wait">You have to wait a few seconds before you make any interactions again!</div>
-    <!-- <button @click="addNotification()">ADD NOTIFICATION</button>
-    <button @click="addNotification1()">ADD NOTIFICATION</button>
-    <button @click="addNotification2()">ADD NOTIFICATION</button>
-    <button @click="addNotification3()">ADD NOTIFICATION</button> -->
-    <NotificationsList />
+  <div id="app">
+    <Layout />
   </div>
 </template>
 
 <script>
-import Header from "@/components/Header.vue";
-import NotificationsList from "@/components/NotificationsList.vue";
+import Layout from './components/layout/Layout.vue';
 
 export default {
   name: "App",
-  components: {
-    Header,
-    NotificationsList
-  },
-  // methods: {
-  //   addNotification() {
-  //     this.$store.dispatch("addNotification", { type: "success", message: "Success message" });
-  //   },
-  //   addNotification1() {
-  //     this.$store.dispatch("addNotification", { type: "error", message: "An error is occured An error is occured An error is occured An error is occured An error is occured" });
-  //   },
-  //   addNotification2() {
-  //     this.$store.dispatch("addNotification", { type: "warning", message: "A warning message" });
-  //   },
-  //   addNotification3() {
-  //     this.$store.dispatch("addNotification", { message: "A info message" });
-  //   },
-  // },
+  components: { Layout },
 }
 </script>
 

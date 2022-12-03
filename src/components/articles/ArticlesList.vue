@@ -4,7 +4,7 @@
             <article class="list-item">
                 <div class="list-item_image">
                     <picture>
-                        <img alt="moviepicture" src="../assets/images/example.jpg">
+                        <img alt="moviepicture" src="../../assets/images/example.jpg">
                     </picture>
                 </div>
                 <h3>Article title</h3>
@@ -13,7 +13,7 @@
             <article class="list-item">
                 <div class="list-item_image">
                     <picture>
-                        <img alt="moviepicture" src="../assets/images/example.jpg">
+                        <img alt="moviepicture" src="../../assets/images/example.jpg">
                     </picture>
                 </div>
                 <h3>Article title</h3>
@@ -22,7 +22,7 @@
             <article class="list-item">
                 <div class="list-item_image">
                     <picture>
-                        <img alt="moviepicture" src="../assets/images/example.jpg">
+                        <img alt="moviepicture" src="../../assets/images/example.jpg">
                     </picture>
                 </div>
                 <h3>Article title</h3>
@@ -31,7 +31,7 @@
             <article class="list-item">
                 <div class="list-item_image">
                     <picture>
-                        <img alt="moviepicture" src="../assets/images/example.jpg">
+                        <img alt="moviepicture" src="../../assets/images/example.jpg">
                     </picture>
                 </div>
                 <h3>Article title</h3>

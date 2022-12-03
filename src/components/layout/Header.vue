@@ -1,0 +1,427 @@
+<template>
+  <header class="header" :class="{ sticky: scrollPosition > 0 }">
+    <div class="header-top">
+      <div class="wrapper">
+        <div class="header-top-contacts">
+          <a href="mailto:krisztianpasztor11@gmail.com" class=""><i class="fas fa-envelope"></i> example@gmail.com</a>
+          <a href="tel:061 5051095" class=""><i class="fas fa-phone-alt"></i> 061 5051095</a>
+          <a href="tel:061 5051095" class=""><i class="fas fa-phone-alt"></i> 061 5051095</a>
+        </div>
+        <div class="header-top-socials">
+          <div class="text">Follow us:</div>
+          <a class="icon facebook"><i class="fab fa-facebook"></i></a>
+          <a class="icon messenger"><i class="fab fa-facebook-messenger"></i></a>
+          <a class="icon instagram"><i class="fab fa-instagram"></i></a>
+          <a class="icon twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+        <div class="lang dropdown">
+          <div @click="isOpenLang = !isOpenLang" class="dropdown-link">EN</div>
+
+          <ul v-show="isOpenLang" class="dropdown-list">
+            <li class="dropdown-list-item">
+              <a href="/sr">SR</a>
+            </li>
+            <li class="dropdown-list-item">
+              <a href="/hu">HU</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-middle">
+      <div class="wrapper">
+        <a href="/" class="logo">
+          <picture>
+            <img class="logo-img" src="../../assets/images/logo.png" alt="logo" />
+          </picture>
+        </a>
+
+        <nav class="nav">
+          <ul>
+            <li><router-link to="/">Home</router-link></li>
+            <li><router-link to="/about">About us</router-link></li>
+            <li><router-link to="/products">Products</router-link></li>
+            <li><router-link to="/discounts">Discounts</router-link></li>
+            <li><router-link to="/gallery">Gallery</router-link></li>
+            <li><router-link to="/blog">Blog</router-link></li>
+            <li><router-link to="/contact">Contact</router-link></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <div class="header-bottom">
+      <div class="wrapper">
+        <div class="search">
+          <input class="search-input" type="text" ref="search" placeholder="Search..." />
+          <button @click="focusSearch" class="search-btn"><i class="fas fa-search"></i></button>
+
+          <div class="search-results">
+            <h4 class="search-results-header">Results: 5</h4>
+            <div class="container">
+              <router-link class="container_box" to="/">
+                <div class="container_box--image">
+                  <img class="img" alt="filter picture" src="../../assets/images/logo.png" />
+                </div>
+                <div class="container_box--title">Termek neve</div>
+                <div class="container_box--date">Kategoria</div>
+              </router-link>
+            </div>
+          </div>
+        </div>
+
+        <div class="functions">
+          <button class="functions-btn"><i class="fas fa-balance-scale"></i></button>
+          <button class="functions-btn"><span>0</span><i class="fas fa-heart"></i></button>
+          <button class="functions-btn"><span>0</span><i class="fas fa-shopping-cart"></i></button>
+        </div>
+      </div>
+    </div>
+  </header>
+</template>
+
+<script>
+export default {
+  name: "Header",
+  data() {
+    return {
+      scrollPosition: 0,
+      isOpenLang: false
+    }
+  },
+  methods: {
+    updateScroll() {
+      this.scrollPosition = window.scrollY;
+    },
+    focusSearch() {
+      this.$refs.search.focus();
+    }
+  },
+  mounted() {
+    window.addEventListener('scroll', this.updateScroll);
+  }
+};
+</script>
+
+<style scoped lang="scss">
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 40;
+  width: 100%;
+  height: 180px;
+  transition: all .3s ease-in-out;
+
+  &-top {
+    background-color: $c-dark-blue;
+
+    & > .wrapper {
+      @include flexBox("space-evenly");
+      padding: 7px 15px;
+    }
+
+    &-contacts {
+      display: flex;
+      gap: 15px;
+
+      a {
+        color: $c-a;
+        transition: .3s ease-in-out;
+
+        &:hover {
+          color: $c-white;
+        }
+      }
+    }
+
+    &-socials {
+      @include flexBox("center", "center", 20px);
+
+      .text {
+        color: $c-a;
+      }
+
+      .icon {
+        font-size: 20px;
+        color: $c-a;
+        transition: .3s ease-in-out;
+
+        &:hover {
+          color: $c-white;
+        }
+      }
+    }
+
+    .dropdown {
+      position: relative;
+
+      &-link {
+        color: $c-a;
+        font-size: 16px;
+        font-weight: 400;
+        cursor: pointer;
+        border-radius: 8px;
+        transition: all .3s ease-in-out;
+
+        &:hover {
+          color: $c-white;
+        }
+      }
+
+      &-list {
+          border-radius: 5px;
+          overflow: hidden;
+          position: absolute;
+          top: 30px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 50px;
+          z-index: 50;
+
+          &-item {
+            padding: 5px;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+            transition: .2s ease-in-out;
+            background-color: $c-dark-blue;
+
+            &:hover {
+              background-color: $c-theme;
+
+              a {
+                color: $c-white;
+              }
+            }
+
+            a {
+              color: $c-a;
+              transition: .2s ease-in-out;
+            }
+
+            &:not(:last-child) {
+              border-bottom: 1px solid $c-a;
+            }
+          }
+      }
+    }
+  }
+
+  &-middle {
+    background-color: $c-e;
+
+    .wrapper {
+      padding: 15px;
+      @include flexBox("space-between");
+    }
+
+    .logo {
+      display: block;
+      height: 100%;
+      width: 200px;
+
+      &-img {
+        height: 100%;
+        width: 100%;
+        object-position: center;
+        object-fit: cover;
+      }
+    }
+
+    .nav {
+
+      ul {
+        @include flexBox();
+        gap: 35px;
+
+        li {
+          a {
+            font-size: 16px;
+            font-weight: bold;
+            color: $c-dark-blue;
+            position: relative;
+
+            &.router-link-exact-active {
+              color: $c-theme;
+
+              &::after {
+                width: 100%;
+              }
+            }
+
+            &::after {
+              position: absolute;
+              content: "";
+              bottom: -5px;
+              left: 50%;
+              transform: translateX(-50%);
+              width: 0;
+              height: 3px;
+              background: $c-theme;
+              transition: width .3s ease;
+            }
+
+            &:hover::after {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &-bottom {
+    background-color: $c-theme;
+
+    & > .wrapper {
+      padding: 10px 15px;
+      @include flexBox("space-between");
+
+      .search {
+        @include flexBox();
+        position: relative;
+
+        &-input {
+          height: 40px;
+          width: 350px;
+          border-radius: 25px 0 0 25px;
+          padding: 0 15px;
+          font-size: 16px;
+          outline: none;
+          background-color: $c-e;
+
+          &:focus {
+            background-color: $c-white;
+          }
+
+          &::placeholder {
+            color: $c-4;
+            font-family: $main-font;
+          }
+        }
+
+        &-btn {
+          @include flexBox();
+          background-color: $c-dark-blue;
+          width: 50px;
+          height: 40px;
+          padding: 10px;
+          cursor: pointer;
+          border-radius: 0 25px 25px 0;
+
+          i {
+            font-size: 18px;
+            color: $c-e;
+          }
+        }
+
+          &-results {
+                position: absolute;
+                z-index: 5;
+                top: 40px;
+                left: 0;
+                background-color: $c-c;
+                width: 400px;
+                max-height: 300px;
+                border-bottom-left-radius: 5px;
+                border-bottom-right-radius: 5px;
+                overflow-y: scroll;
+                @media #{$r-max-s} {
+                    top: 30px;
+                    left: -380px;
+                    transform: translateX(0);
+                }
+                @media #{$r-max-l} {
+                    width: 300px;
+                    left: -265px;
+                }
+                &-header {
+                    color: $c-3;
+                    text-align: center;
+                }
+                .container {
+                    position: relative;
+                    &_box {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        height: 70px;
+                        padding: 5px;
+                        margin: 5px 10px;
+                        border-bottom: 1px solid $c-3;
+                        cursor: pointer;
+                        text-decoration: none;
+                        @media #{$r-max-l} {
+                            flex-direction: column;
+                            height: auto;
+                        }
+                        &--image {
+                            height: 100%;
+                            width: 120px;
+                            @media #{$r-max-l} {
+                                height: 150px;
+                                width: 250px;
+                            }
+                            .img {
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                                object-position: center;
+                            }
+                        }
+                        &--title, &--date {
+                            color: $c-dark-blue;
+                            font-size: 16px;
+                            font-weight: 700;
+                            text-align: center;
+                            @media #{$r-max-l} {
+                                margin: 5px 0;
+                            }
+                        }
+                        &:hover {
+                            background-color: $c-dark-blue;
+                            .container_box--title, .container_box--date {
+                                color: $c-white;
+                            }
+                        }
+                    }
+                }
+          }
+      }
+
+      .functions {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+
+        &-btn {
+          background-color: transparent;
+          cursor: pointer;
+          position: relative;
+
+          span {
+            @include flexBox();
+            position: absolute;
+            top: 0;
+            right: 0;
+            transform: translate(70%, -70%);
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            font-size: 13px;
+            color: $c-e;
+            background-color: $c-dark-blue;
+          }
+
+          i {
+            font-size: 24px;
+            color: $c-e;
+          }
+        }
+      }
+    }
+  }
+}
+</style>
