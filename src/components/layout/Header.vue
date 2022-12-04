@@ -14,16 +14,17 @@
           <a class="icon instagram"><i class="fab fa-instagram"></i></a>
           <a class="icon twitter"><i class="fab fa-twitter"></i></a>
         </div>
-        <div class="lang dropdown">
-          <div @click="isOpenLang = !isOpenLang" class="dropdown-link">EN</div>
+        <div class="lang dropdown js-lang-switcher">
+          <div @click="isOpenLang = !isOpenLang" class="dropdown-link">{{ $i18n.locale }}</div>
 
           <ul v-show="isOpenLang" class="dropdown-list">
-            <li class="dropdown-list-item">
+            <li class="dropdown-list-item" @click="setLocale($event)" v-for="(lang, i) in $i18n.availableLocales" :key="`Lang${i}`">{{ lang }}</li>
+            <!-- <li class="dropdown-list-item">
               <a href="/sr">SR</a>
             </li>
             <li class="dropdown-list-item">
               <a href="/hu">HU</a>
-            </li>
+            </li> -->
           </ul>
         </div>
       </div>
@@ -39,13 +40,13 @@
 
         <nav class="nav">
           <ul>
-            <li><router-link to="/">Home</router-link></li>
-            <li><router-link to="/about">About us</router-link></li>
-            <li><router-link to="/products">Products</router-link></li>
-            <li><router-link to="/discounts">Discounts</router-link></li>
-            <li><router-link to="/gallery">Gallery</router-link></li>
-            <li><router-link to="/blog">Blog</router-link></li>
-            <li><router-link to="/contact">Contact</router-link></li>
+            <li><router-link :to="`/${$i18n.locale}`">Home</router-link></li>
+            <li><router-link :to="`/${$i18n.locale}/about`">About us</router-link></li>
+            <li><router-link :to="`/${$i18n.locale}/products`">Products</router-link></li>
+            <li><router-link :to="`/${$i18n.locale}/discounts`">Discounts</router-link></li>
+            <li><router-link :to="`/${$i18n.locale}/gallery`">Gallery</router-link></li>
+            <li><router-link :to="`/${$i18n.locale}/blog`">Blog</router-link></li>
+            <li><router-link :to="`/${$i18n.locale}/contact`">Contact</router-link></li>
           </ul>
         </nav>
       </div>
@@ -57,18 +58,21 @@
           <input class="search-input" type="text" ref="search" placeholder="Search..." />
           <button @click="focusSearch" class="search-btn"><i class="fas fa-search"></i></button>
 
-          <div class="search-results">
+          <!-- <div class="search-results">
             <h4 class="search-results-header">Results: 5</h4>
             <div class="container">
               <router-link class="container_box" to="/">
                 <div class="container_box--image">
-                  <img class="img" alt="filter picture" src="../../assets/images/logo.png" />
+                  <picture>
+                    <source srcset="../../assets/images/example.jpg">
+                    <img class="img" alt="filter picture" src="../../assets/images/logo.png" />
+                  </picture>
                 </div>
                 <div class="container_box--title">Termek neve</div>
                 <div class="container_box--date">Kategoria</div>
               </router-link>
             </div>
-          </div>
+          </div> -->
         </div>
 
         <div class="functions">
@@ -96,10 +100,21 @@ export default {
     },
     focusSearch() {
       this.$refs.search.focus();
+    },
+    setLocale(event) {
+      console.log(event.target.value);
+      this.$i18n.locale = event.target.value;
+      this.$router.push({ params: { lang: event.target.value } });
     }
   },
   mounted() {
     window.addEventListener('scroll', this.updateScroll);
+    document.addEventListener('click', (event) => {
+      // Close the language switcher if user clicks outside of it
+      if (event.target.closest('.js-lang-switcher')) return;
+      this.isOpenLang = false;
+    });
+    console.log(this.$i18n);
   }
 };
 </script>
@@ -317,78 +332,76 @@ export default {
           }
         }
 
-          &-results {
-                position: absolute;
-                z-index: 5;
-                top: 40px;
-                left: 0;
-                background-color: $c-c;
-                width: 400px;
-                max-height: 300px;
-                border-bottom-left-radius: 5px;
-                border-bottom-right-radius: 5px;
-                overflow-y: scroll;
-                @media #{$r-max-s} {
-                    top: 30px;
-                    left: -380px;
-                    transform: translateX(0);
-                }
-                @media #{$r-max-l} {
-                    width: 300px;
-                    left: -265px;
-                }
-                &-header {
-                    color: $c-3;
-                    text-align: center;
-                }
-                .container {
-                    position: relative;
-                    &_box {
-                        display: flex;
-                        align-items: center;
-                        justify-content: space-between;
-                        height: 70px;
-                        padding: 5px;
-                        margin: 5px 10px;
-                        border-bottom: 1px solid $c-3;
-                        cursor: pointer;
-                        text-decoration: none;
-                        @media #{$r-max-l} {
-                            flex-direction: column;
-                            height: auto;
-                        }
-                        &--image {
-                            height: 100%;
-                            width: 120px;
-                            @media #{$r-max-l} {
-                                height: 150px;
-                                width: 250px;
-                            }
-                            .img {
-                                width: 100%;
-                                height: 100%;
-                                object-fit: cover;
-                                object-position: center;
-                            }
-                        }
-                        &--title, &--date {
-                            color: $c-dark-blue;
-                            font-size: 16px;
-                            font-weight: 700;
-                            text-align: center;
-                            @media #{$r-max-l} {
-                                margin: 5px 0;
-                            }
-                        }
-                        &:hover {
-                            background-color: $c-dark-blue;
-                            .container_box--title, .container_box--date {
-                                color: $c-white;
-                            }
-                        }
-                    }
-                }
+        &-results {
+          position: absolute;
+          z-index: 5;
+          top: 40px;
+          left: 0;
+          background-color: $c-b;
+          width: 100%;
+          max-height: 300px;
+          border-bottom-left-radius: 5px;
+          border-bottom-right-radius: 5px;
+          overflow-y: scroll;
+          @include scrollbars(6px, $c-9);
+
+          @media #{$r-max-s} {
+            top: 30px;
+            left: -380px;
+            transform: translateX(0);
           }
+          @media #{$r-max-l} {
+            width: 300px;
+            left: -265px;
+          }
+          &-header {
+            text-align: center;
+            padding: 10px 0;
+            color: $c-dark-blue;
+          }
+          .container {
+            position: relative;
+
+            &_box {
+              @include flexBox("space-between", "center", 10px);
+              height: auto;
+              padding: 5px;
+              cursor: pointer;
+              text-decoration: none;
+
+              &:not(:last-child) {
+                border-bottom: 1px solid $c-6;
+              }
+
+              @media #{$r-max-l} {
+                  flex-direction: column;
+                  height: auto;
+              }
+              &--image {
+                width: 30%;
+                height: 100%;
+                picture {
+                  @include respImage(0.95);
+                }
+              }
+              &--title, &--date {
+                color: $c-dark-blue;
+                font-size: 16px;
+                font-weight: 700;
+                text-align: center;
+                @media #{$r-max-l} {
+                  margin: 5px 0;
+                }
+              }
+              &:hover {
+                background-color: $c-dark-blue;
+                .container_box--title, .container_box--date {
+                  color: $c-white;
+                }
+              }
+            }
+          }
+        }
       }
 
       .functions {
