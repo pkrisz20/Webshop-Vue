@@ -19,6 +19,7 @@ html, body {
   padding: 0;
   overflow-x: hidden;
   font-family: $main-font;
+  @include scrollbars(7px, rgba($c-theme, .6), $c-d);
 }
 
 html:focus-within {

@@ -1,11 +1,11 @@
 <template>
-  <header class="header" :class="{ sticky: scrollPosition > 0 }">
+  <header class="header" :class="{ 'header-sticky': scrollPosition > 0 }">
     <div class="header-top">
       <div class="wrapper">
         <div class="header-top-contacts">
-          <a href="mailto:krisztianpasztor11@gmail.com" class=""><i class="fas fa-envelope"></i> example@gmail.com</a>
-          <a href="tel:061 5051095" class=""><i class="fas fa-phone-alt"></i> 061 5051095</a>
-          <a href="tel:061 5051095" class=""><i class="fas fa-phone-alt"></i> 061 5051095</a>
+          <a href="mailto:krisztianpasztor11@gmail.com"><i class="fas fa-envelope"></i> example@gmail.com</a>
+          <a href="tel:061 5051095"><i class="fas fa-phone-alt"></i> 061 5051095</a>
+          <a href="tel:061 5051095"><i class="fas fa-phone-alt"></i> 061 5051095</a>
         </div>
         <div class="header-top-socials">
           <div class="text">Follow us:</div>
@@ -49,6 +49,13 @@
             <li><router-link :to="`/${$i18n.locale}/contact`">Contact</router-link></li>
           </ul>
         </nav>
+
+        <div class="functions">
+          <button class="functions-btn"><i class="fas fa-balance-scale"></i></button>
+          <button class="functions-btn"><span>9</span><i class="fas fa-heart"></i></button>
+          <button class="functions-btn"><span>12</span><i class="fas fa-shopping-cart"></i></button>
+          <button class="functions-btn js-hamburger-menu" @click="isOpenMobileNav = true"><i class="fas fa-bars"></i></button>
+        </div>
       </div>
     </div>
 
@@ -82,6 +89,45 @@
         </div>
       </div>
     </div>
+
+    <div class="header-mobile-nav js-mobile-menu" :class="{ 'nav-opened': isOpenMobileNav }">
+      <div class="wrapper">
+        <div class="close-nav" @click="isOpenMobileNav = false">
+          <i class="fas fa-times"></i>
+        </div> 
+
+        <div class="langs">
+          <div class="langs-item current-lang">{{ $i18n.locale }}</div>
+          <button class="langs-item">sr</button>
+          <button class="langs-item">hu</button>
+        </div>
+
+        <div class="socials">
+          <a class="icon facebook"><i class="fab fa-facebook"></i></a>
+          <a class="icon messenger"><i class="fab fa-facebook-messenger"></i></a>
+          <a class="icon instagram"><i class="fab fa-instagram"></i></a>
+          <a class="icon twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+
+        <div class="contacts">
+          <a href="mailto:krisztianpasztor11@gmail.com"><i class="fas fa-envelope"></i> example@gmail.com</a>
+          <a href="tel:061 5051095"><i class="fas fa-phone-alt"></i> 061 5051095</a>
+          <a href="tel:061 5051095"><i class="fas fa-phone-alt"></i> 061 5051095</a>
+        </div>
+
+        <nav class="nav">
+          <ul>
+            <li><router-link :to="`/${$i18n.locale}`">Home</router-link></li>
+            <li><router-link :to="`/${$i18n.locale}/about`">About us</router-link></li>
+            <li><router-link :to="`/${$i18n.locale}/products`">Products</router-link></li>
+            <li><router-link :to="`/${$i18n.locale}/discounts`">Discounts</router-link></li>
+            <li><router-link :to="`/${$i18n.locale}/gallery`">Gallery</router-link></li>
+            <li><router-link :to="`/${$i18n.locale}/blog`">Blog</router-link></li>
+            <li><router-link :to="`/${$i18n.locale}/contact`">Contact</router-link></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
   </header>
 </template>
 
@@ -91,7 +137,8 @@ export default {
   data() {
     return {
       scrollPosition: 0,
-      isOpenLang: false
+      isOpenLang: false,
+      isOpenMobileNav: false
     }
   },
   methods: {
@@ -102,9 +149,14 @@ export default {
       this.$refs.search.focus();
     },
     setLocale(event) {
-      console.log(event.target.value);
+      // console.log(event.target.value);
       this.$i18n.locale = event.target.value;
       this.$router.push({ params: { lang: event.target.value } });
+    }
+  },
+  watch: {
+    "$route": function() {
+      this.isOpenMobileNav = false;
     }
   },
   mounted() {
@@ -113,8 +165,12 @@ export default {
       // Close the language switcher if user clicks outside of it
       if (event.target.closest('.js-lang-switcher')) return;
       this.isOpenLang = false;
+      // Close the mobile nav menu if the user clicks outside of it
+      if (event.target.closest('.js-hamburger-menu')) return;
+      if (event.target.closest('.js-mobile-menu')) return;
+      this.isOpenMobileNav = false;
     });
-    console.log(this.$i18n);
+    // console.log(this.$i18n);
   }
 };
 </script>
@@ -129,8 +185,154 @@ export default {
   height: 180px;
   transition: all .3s ease-in-out;
 
+  &-mobile-nav {
+    @media #{$r-min-l} { display: none; }
+    position: absolute;
+    z-index: 50;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100vh;
+    background-color: $c-c;
+    overflow-y: auto;
+    transition: right .3s ease-in-out;
+    @include scrollbars(4px, $c-theme);
+
+    &.nav-opened {
+      right: 0;
+    }
+
+    & > .wrapper {
+      width: 100%;
+      margin: 0 auto;
+      padding: 15px;
+      position: relative;
+    }
+
+    .close-nav {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+
+      i {
+        font-size: 30px;
+        color: $c-dark-blue;
+        transition: .2s ease-in-out;
+
+        &:hover {
+          color: $c-white;
+        }
+      }
+    }
+
+    .langs {
+      @include flexBox("center", "center", 20px);
+
+      &-item {
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        padding: 10px;
+        border-radius: 5px;
+        background: transparent;
+        color: $c-dark-blue;
+        font-size: 14px;
+        text-transform: uppercase;
+        font-weight: 700;
+        border: 1px solid $c-dark-blue;
+        transition: all .2s ease-in-out;
+
+        &:hover {
+          border: 1px solid $c-white;
+          color: $c-white;
+        }
+
+        &.current-lang {
+          background-color: $c-theme;
+          color: $c-white;
+          border: 1px solid $c-theme;
+        }
+      }
+    }
+
+    .socials {
+      margin: 20px 0;
+      @include flexBox("center", "center", 20px);
+    
+      .icon {
+        font-size: 24px;
+        color: $c-4;
+        transition: .2s ease-in-out;
+
+        &:hover {
+          color: $c-9;
+        }
+      }
+    }
+    
+    .contacts {
+      @include flexBox("center", "flex-start", 8px);
+      flex-direction: column;
+
+      & > a {
+        transition: .2s ease-in-out;
+        color: $c-4;
+
+        &:hover {
+          color: $c-white;
+        }
+      }
+    }
+
+    .nav {
+      margin: 15px 0 0;
+
+      & > ul {
+        @include flexBox("center", "flex-start");
+        flex-direction: column;
+
+        li {
+          padding: 0;
+          width: 100%;
+          cursor: pointer;
+
+          &:has(a.router-link-exact-active) {
+            background-color: $c-theme;
+            border-radius: 5px;
+          }
+
+          a {
+            margin-left: 24px;
+            display: block;
+            width: auto;
+            height: 100%;
+            font-weight: 700;
+            color: $c-dark-blue;
+            font-size: 18px;
+            padding: 10px 0;
+            transition: .3s ease-in-out;
+
+            &:hover {
+              color: $c-9;
+            }
+
+            &.router-link-exact-active {
+              color: $c-white;
+            }
+          }
+        }
+      }
+    }
+  }
+
   &-top {
     background-color: $c-dark-blue;
+
+    @media #{$r-max-l} {
+      display: none;
+    }
 
     & > .wrapper {
       @include flexBox("space-evenly");
@@ -144,6 +346,11 @@ export default {
       a {
         color: $c-a;
         transition: .3s ease-in-out;
+        font-size: 16px;
+
+        @media #{$r-max-l} {
+          font-size: 14px;
+        }
 
         &:hover {
           color: $c-white;
@@ -156,12 +363,18 @@ export default {
 
       .text {
         color: $c-a;
+        @media #{$r-max-l} {
+          font-size: 14px;
+        }
       }
 
       .icon {
         font-size: 20px;
         color: $c-a;
         transition: .3s ease-in-out;
+        @media #{$r-max-l} {
+          font-size: 17px;
+        }
 
         &:hover {
           color: $c-white;
@@ -228,14 +441,63 @@ export default {
     background-color: $c-e;
 
     .wrapper {
+      transition: padding .2s ease-in-out;
       padding: 15px;
       @include flexBox("space-between");
+    
+      @media #{$r-max-xl} {
+        padding: 9px 30px;
+      }
+
+      @media #{$r-max-xl} {
+        padding: 9px 15px;
+      }
+
+      & > .functions {
+        display: none;
+        align-items: center;
+        gap: 24px;
+
+        @media #{$r-max-l} {
+          display: flex;
+        }
+
+        .functions-btn {
+          background-color: transparent;
+          cursor: pointer;
+          position: relative;
+
+          span {
+            @include flexBox();
+            position: absolute;
+            top: 0;
+            right: 0;
+            transform: translate(70%, -70%);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            color: $c-e;
+            background-color: $c-dark-blue;
+          }
+
+          i {
+            font-size: 20px;
+            color: $c-theme;
+          }
+        }
+      }
     }
 
     .logo {
       display: block;
       height: 100%;
       width: 200px;
+      transition: width .2s ease-in-out;
+
+      @media #{$r-max-l} {
+        width: 130px;
+      }
 
       &-img {
         height: 100%;
@@ -246,6 +508,9 @@ export default {
     }
 
     .nav {
+      @media #{$r-max-l} {
+        display: none;
+      }
 
       ul {
         @include flexBox();
@@ -288,11 +553,21 @@ export default {
   }
 
   &-bottom {
+    position: relative;
     background-color: $c-theme;
 
     & > .wrapper {
       padding: 10px 15px;
       @include flexBox("space-between");
+
+      @media #{$r-max-xl} {
+        padding: 10px 30px;
+      }
+
+      @media #{$r-max-l} {
+        padding: 7px 30px;
+        @include flexBox("center");
+      }
 
       .search {
         @include flexBox();
@@ -306,6 +581,15 @@ export default {
           font-size: 16px;
           outline: none;
           background-color: $c-e;
+
+          @media #{$r-max-l} {
+            height: 30px;
+            font-size: 14px;
+          }
+
+          @media #{$r-max-s} {
+            width: auto;
+          }
 
           &:focus {
             background-color: $c-white;
@@ -325,10 +609,17 @@ export default {
           padding: 10px;
           cursor: pointer;
           border-radius: 0 25px 25px 0;
+          @media #{$r-max-l} {
+            width: 40px;
+            height: 30px;
+          }
 
           i {
             font-size: 18px;
             color: $c-e;
+          @media #{$r-max-l} {
+            font-size: 14px;
+          }
           }
         }
 
@@ -374,8 +665,8 @@ export default {
               }
 
               @media #{$r-max-l} {
-                  flex-direction: column;
-                  height: auto;
+                flex-direction: column;
+                height: auto;
               }
               &--image {
                 width: 30%;
@@ -409,6 +700,10 @@ export default {
         align-items: center;
         gap: 30px;
 
+        @media #{$r-max-l} {
+          display: none;
+        }
+
         &-btn {
           background-color: transparent;
           cursor: pointer;
@@ -433,6 +728,18 @@ export default {
             color: $c-e;
           }
         }
+      }
+    }
+  }
+
+  @media #{$r-min-l} {
+    &-sticky {
+      .header-middle > .wrapper {
+        padding: 5px 15px;
+      }
+
+      .logo {
+        width: 160px;
       }
     }
   }
