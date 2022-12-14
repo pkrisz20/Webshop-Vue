@@ -94,7 +94,7 @@
       <div class="wrapper">
         <div class="close-nav" @click="isOpenMobileNav = false">
           <i class="fas fa-times"></i>
-        </div> 
+        </div>
 
         <div class="langs">
           <div class="langs-item current-lang">{{ $i18n.locale }}</div>
@@ -185,6 +185,10 @@ export default {
   height: 180px;
   transition: all .3s ease-in-out;
 
+  @media #{$r-max-l} {
+    height: auto;
+  }
+
   &-mobile-nav {
     @media #{$r-min-l} { display: none; }
     position: absolute;
@@ -260,7 +264,7 @@ export default {
     .socials {
       margin: 20px 0;
       @include flexBox("center", "center", 20px);
-    
+
       .icon {
         font-size: 24px;
         color: $c-4;
@@ -271,7 +275,7 @@ export default {
         }
       }
     }
-    
+
     .contacts {
       @include flexBox("center", "flex-start", 8px);
       flex-direction: column;
@@ -444,13 +448,9 @@ export default {
       transition: padding .2s ease-in-out;
       padding: 15px;
       @include flexBox("space-between");
-    
-      @media #{$r-max-xl} {
-        padding: 9px 30px;
-      }
 
       @media #{$r-max-xl} {
-        padding: 9px 15px;
+        padding: 15px 30px;
       }
 
       & > .functions {

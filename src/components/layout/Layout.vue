@@ -24,5 +24,9 @@ import Footer from "./Footer.vue";
 <style lang="scss" scoped>
 .site-wrap {
     padding-top: 180px;
+
+    @media #{$r-max-l} {
+        padding-top: 110px;
+    }
 }
 </style>

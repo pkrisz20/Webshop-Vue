@@ -1,0 +1,157 @@
+.hero {
+    padding: 0 !important;
+    height: calc(100vh - 180px);
+    width: 100%;
+    position: relative;
+
+    @media #{$r-max-l} {
+        height: calc(100vh - 110px);
+    }
+
+    & > .VueCarousel {
+        width: 100%;
+        height: calc(100vh - 180px);
+        @media #{$r-max-l} {
+            height: calc(100vh - 110px);
+        }
+        position: relative;
+        .VueCarousel-wrapper {
+            .VueCarousel-inner {
+                height: calc(100vh - 180px);
+                @media #{$r-max-l} {
+                    height: calc(100vh - 110px);
+                }
+                .VueCarousel-slide {
+                    width: 100%;
+                    height: calc(100vh - 180px);
+                    @media #{$r-max-l} {
+                        height: calc(100vh - 110px);
+                    }
+                    position: relative;
+                    &::after {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        content: '';
+                        width: 100%;
+                        height: 100%;
+                        background-color: rgba($c-black, 0.6);
+                    }
+                    .box {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        z-index: 2;
+                        @include flexBox();
+                        flex-direction: column;
+                        max-width: 650px;
+                        height: auto;
+                        text-align: center;
+                        &-title {
+                            font-size: 40px;
+                            color: $c-white;
+                            pointer-events: none;
+                            margin-bottom: 25px;
+
+                            @media #{$r-max-l} {
+                                font-size: 30px;
+                            }
+                            @media #{$r-max-m} {
+                                font-size: 24px;
+                            }
+                            @media #{$r-max-s} {
+                                font-size: 20px;
+                            }
+                        }
+                        &-btn {
+                            cursor: pointer;
+                            text-decoration: none;
+                            padding: 12px 30px;
+                            background: transparent;
+                            color: $c-white;
+                            font-size: 24px;
+                            font-weight: 600;
+                            text-transform: uppercase;
+                            transition: .3s ease;
+                            border: 3px solid $c-white;
+                            &:hover {
+                                background-color: $c-white;
+                                color: $c-black;
+                            }
+                            @media #{$r-max-m} {
+                                font-size: 20px;
+                            }
+                            @media #{$r-max-s} {
+                                font-size: 18px;
+                            }
+                        }
+                    }
+                    img {
+                        @include imageCover();
+                    }
+                }
+            }
+        }
+        .VueCarousel-navigation {
+            &-button {
+                background-color: transparent;
+                border: none;
+                color: transparent;
+                cursor: pointer;
+                outline: none;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 40px;
+                height: 40px;
+                border-radius: 5px;
+                padding: 5px;
+                @include flexBox();
+                @media #{$r-max-l} {
+                    display: none;
+                }
+                i {
+                    font-size: 35px;
+                    color: $c-white;
+                }
+
+                &.VueCarousel-navigation-next {
+                    right: 20px;
+                    @media #{$r-max-m} {
+                        right: 0;
+                    }
+                }
+                &.VueCarousel-navigation-prev {
+                    left: 20px;
+                    @media #{$r-max-m} {
+                        left: 0;
+                    }
+                }
+                &.VueCarousel-navigation--disabled {
+                    opacity: 0 !important;
+                }
+            }
+        }
+        .VueCarousel-pagination {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            .VueCarousel-dot-container {
+                .VueCarousel-dot {
+                    outline: none;
+                    border-radius: 50%;
+                    width: 12px !important;
+                    height: 12px !important;
+                    background-color: $c-white;
+                    padding: 0 10px !important;
+                    margin-top: 0 !important;
+                    &--active {
+                        background-color: $c-theme !important;
+                    }
+                }
+            }
+        }
+    }
+}

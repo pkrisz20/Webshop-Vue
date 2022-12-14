@@ -1,11 +1,8 @@
 <template>
   <div class="home">
-    <div class="wrapper">    
-      <BlockTitle title="Articles" subtitle="Here begins the list" />
-      <ArticlesList />
-    </div>
+  <Hero />
 
-    <section class="mytabs">
+    <!-- <section class="mytabs">
       <div class="wrapper">
 
       <BlockTitle title="Tabs" subtitle="Here begins the tabs section" />
@@ -49,27 +46,29 @@
           </slide>
         </Carousel>
       </div>
-    </section>
+    </section> -->
   </div>
 </template>
 
 <script>
-import ArticlesList from "@/components/articles/ArticlesList.vue";
-import Tabs from "@/components/Tabs.vue";
-import Tab from "@/components/Tab.vue";
-import BlockTitle from "@/components/BlockTitle.vue";
-import Carousel from "@/components/Carousel.vue";
-import { Slide } from "vue-carousel";
+// import ArticlesList from "@/components/articles/ArticlesList.vue";
+// import Tabs from "@/components/Tabs.vue";
+// import Tab from "@/components/Tab.vue";
+// import BlockTitle from "@/components/BlockTitle.vue";
+import Hero from "@/components/Hero.vue";
+// import Carousel from "@/components/Carousel.vue";
+// import { Slide } from "vue-carousel";
 
 export default {
   name: "Home",
   components: {
-    BlockTitle,
-    ArticlesList,
-    Tab,
-    Tabs,
-    Carousel,
-    Slide
+    // BlockTitle,
+    // ArticlesList,
+    // Tab,
+    // Tabs,
+    // Carousel,
+    // Slide,
+    Hero
   },
   data() {
     return {
@@ -154,9 +153,9 @@ export default {
       return require(`../assets/images/${image}`);
     },
   },
-  mounted() {
-    this.getFact();
-  }
+  // mounted() {
+  //   this.getFact();
+  // }
 };
 </script>
 
