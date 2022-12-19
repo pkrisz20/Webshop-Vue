@@ -107,7 +107,11 @@
                 height: 40px;
                 border-radius: 5px;
                 padding: 5px;
+                transition: all .3s ease;
                 @include flexBox();
+                &:hover {
+                    background-color: $c-theme;
+                }
                 @media #{$r-max-l} {
                     display: none;
                 }

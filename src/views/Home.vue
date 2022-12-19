@@ -1,6 +1,21 @@
 <template>
   <div class="home">
-  <Hero />
+    <Hero />
+    <FeaturedCategories />
+    <ProductCarousel />
+
+    <!-- <section class="section-name">
+      <div class="wrapper">
+        <BlockTitle title="Images" subtitle="Here begins the images section" />
+        <Carousel :navigation="true" :pagination="true" :responsive="[[540, 1], [768, 2], [1200, 3]]">
+          <slide v-for="(product, index) in products" :key="index">
+            <picture>
+              <img alt="moviepicture" :src="getImage(product)">
+            </picture>
+          </slide>
+        </Carousel>
+      </div>
+    </section> -->
 
     <!-- <section class="mytabs">
       <div class="wrapper">
@@ -15,37 +30,6 @@
           <li v-for="(item, index) in this.randomFact" :key="index">{{ item }}</li>
         </ul>
       </div>
-    </section>
-
-    <section class="section-name">
-      <div class="wrapper">
-        <BlockTitle title="Images" subtitle="Here begins the images section" />
-        <Carousel :navigation="true" :pagination="true" :responsive="[[540, 1], [768, 2], [1200, 3]]">
-          <slide v-for="(product, index) in products" :key="index">
-            <picture>
-              <img alt="moviepicture" :src="getImage(product)">
-            </picture>
-          </slide>
-        </Carousel>
-      </div>
-    </section>
-
-    <section class="articles-carousel">
-      <div class="wrapper">
-        <BlockTitle title="Products"/>
-        <Carousel :navigation="true" :pagination="false" :responsive="[[320, 1], [540, 2], [768, 3], [1200, 4]]">
-          <slide class="articles-carousel-article" v-for="(article, index) in articles" :key="index">
-            <div class="articles-carousel-article_image">
-              <picture>
-                <img alt="moviepicture" :src="getImage(article.image)">
-              </picture>
-            </div>
-            <h2 class="articles-carousel-article_title">{{ article.title }}</h2>
-            <p class="articles-carousel-article_description">{{ article.desc }}</p>
-            <button class="articles-carousel-article_btn"><i class="fas fa-shopping-cart"></i> ADD TO CART</button>
-          </slide>
-        </Carousel>
-      </div>
     </section> -->
   </div>
 </template>
@@ -54,8 +38,10 @@
 // import ArticlesList from "@/components/articles/ArticlesList.vue";
 // import Tabs from "@/components/Tabs.vue";
 // import Tab from "@/components/Tab.vue";
+import ProductCarousel from "@/components/products/ProductCarousel.vue";
 // import BlockTitle from "@/components/BlockTitle.vue";
 import Hero from "@/components/Hero.vue";
+import FeaturedCategories from "@/components/FeaturedCategories.vue";
 // import Carousel from "@/components/Carousel.vue";
 // import { Slide } from "vue-carousel";
 
@@ -66,8 +52,10 @@ export default {
     // ArticlesList,
     // Tab,
     // Tabs,
+    ProductCarousel,
     // Carousel,
     // Slide,
+    FeaturedCategories,
     Hero
   },
   data() {
@@ -96,43 +84,6 @@ export default {
         "example.jpg",
         "example.jpg",
       ],
-      articles: [
-        {
-          title: "Article title",
-          image: "example.jpg",
-          desc: "Description to the article and the long text which is at the below of the article card"
-        },
-        {
-          title: "Article title",
-          image: "example.jpg",
-          desc: "Description to the article and the long text which is at the below of the article card"
-        },
-        {
-          title: "Article title",
-          image: "example.jpg",
-          desc: "Description to the article and the long text which is at the below of the article card"
-        },
-        {
-          title: "Article title",
-          image: "example.jpg",
-          desc: "Description to the article and the long text which is at the below of the article card"
-        },
-        {
-          title: "Article title",
-          image: "example.jpg",
-          desc: "Description to the article and the long text which is at the below of the article card"
-        },
-        {
-          title: "Article title",
-          image: "example.jpg",
-          desc: "Description to the article and the long text which is at the below of the article card"
-        },
-        {
-          title: "Article title",
-          image: "example.jpg",
-          desc: "Description to the article and the long text which is at the below of the article card"
-        },
-      ]
     }
   },
   methods: {
@@ -148,9 +99,6 @@ export default {
       .catch(err => {
         if (err.response.status >= 500 && err.response.status <= 599) console.log("Something went wrong");
       });
-    },
-    getImage(image) {
-      return require(`../assets/images/${image}`);
     },
   },
   // mounted() {

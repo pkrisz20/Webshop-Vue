@@ -42,7 +42,7 @@
           <ul>
             <li><router-link :to="`/${$i18n.locale}`">Home</router-link></li>
             <li><router-link :to="`/${$i18n.locale}/about`">About us</router-link></li>
-            <li><router-link :to="`/${$i18n.locale}/products`">Products</router-link></li>
+            <li><router-link :to="`/${$i18n.locale}/webshop`">Webshop</router-link></li>
             <li><router-link :to="`/${$i18n.locale}/discounts`">Discounts</router-link></li>
             <li><router-link :to="`/${$i18n.locale}/gallery`">Gallery</router-link></li>
             <li><router-link :to="`/${$i18n.locale}/blog`">Blog</router-link></li>
@@ -119,7 +119,7 @@
           <ul>
             <li><router-link :to="`/${$i18n.locale}`">Home</router-link></li>
             <li><router-link :to="`/${$i18n.locale}/about`">About us</router-link></li>
-            <li><router-link :to="`/${$i18n.locale}/products`">Products</router-link></li>
+            <li><router-link :to="`/${$i18n.locale}/webshop`">Webshop</router-link></li>
             <li><router-link :to="`/${$i18n.locale}/discounts`">Discounts</router-link></li>
             <li><router-link :to="`/${$i18n.locale}/gallery`">Gallery</router-link></li>
             <li><router-link :to="`/${$i18n.locale}/blog`">Blog</router-link></li>
