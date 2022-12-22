@@ -1,6 +1,6 @@
 <template>
     <header class="header_title">
-        <h1 class="header_title-main">{{ title }}</h1>
+        <h2 class="header_title-main">{{ title }}</h2>
         <p v-if="this.$props.subtitle" class="header_title-sub">{{ subtitle }}</p>
     </header>
 </template>

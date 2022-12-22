@@ -2,20 +2,7 @@
   <div class="home">
     <Hero />
     <FeaturedCategories />
-    <ProductCarousel />
-
-    <!-- <section class="section-name">
-      <div class="wrapper">
-        <BlockTitle title="Images" subtitle="Here begins the images section" />
-        <Carousel :navigation="true" :pagination="true" :responsive="[[540, 1], [768, 2], [1200, 3]]">
-          <slide v-for="(product, index) in products" :key="index">
-            <picture>
-              <img alt="moviepicture" :src="getImage(product)">
-            </picture>
-          </slide>
-        </Carousel>
-      </div>
-    </section> -->
+    <ProductCarousel :products="this.products" />
 
     <!-- <section class="mytabs">
       <div class="wrapper">
@@ -35,32 +22,19 @@
 </template>
 
 <script>
-// import ArticlesList from "@/components/articles/ArticlesList.vue";
-// import Tabs from "@/components/Tabs.vue";
-// import Tab from "@/components/Tab.vue";
 import ProductCarousel from "@/components/products/ProductCarousel.vue";
-// import BlockTitle from "@/components/BlockTitle.vue";
 import Hero from "@/components/Hero.vue";
 import FeaturedCategories from "@/components/FeaturedCategories.vue";
-// import Carousel from "@/components/Carousel.vue";
-// import { Slide } from "vue-carousel";
 
 export default {
   name: "Home",
   components: {
-    // BlockTitle,
-    // ArticlesList,
-    // Tab,
-    // Tabs,
     ProductCarousel,
-    // Carousel,
-    // Slide,
     FeaturedCategories,
-    Hero
+    Hero,
   },
   data() {
     return {
-      randomFact: [],
       tabContent: [
         {
           title: "Web",
@@ -77,33 +51,99 @@ export default {
         },
       ],
       products: [
-        "example.jpg",
-        "example.jpg",
-        "example.jpg",
-        "example.jpg",
-        "example.jpg",
-        "example.jpg",
-      ],
+        {
+          name: "Product Name",
+          image: "example.jpg",
+          price: 150,
+          isOnDiscount: true,
+          discount: 68,
+          isAvailable: true,
+          isSpecial: false
+        },
+        {
+          name: "Name",
+          image: "example.jpg",
+          price: 350,
+          isOnDiscount: true,
+          discount: 160,
+          isAvailable: false,
+          isSpecial: true
+        },
+        {
+          name: "Eggs",
+          image: "example.jpg",
+          price: 850,
+          isOnDiscount: false,
+          discount: null,
+          isAvailable: true,
+          isSpecial: false
+        },
+        {
+          name: "Valami",
+          image: "example.jpg",
+          price: 1860,
+          isOnDiscount: false,
+          discount: null,
+          isAvailable: false,
+          isSpecial: true
+        },
+        {
+          name: "Pork fat",
+          image: "example.jpg",
+          price: 250,
+          isOnDiscount: true,
+          discount: 90,
+          isAvailable: true,
+          isSpecial: false
+        },
+                {
+          name: "Product Name",
+          image: "example.jpg",
+          price: 150,
+          isOnDiscount: true,
+          discount: 68,
+          isAvailable: true,
+          isSpecial: false
+        },
+        {
+          name: "Name",
+          image: "example.jpg",
+          price: 350,
+          isOnDiscount: true,
+          discount: 160,
+          isAvailable: false,
+          isSpecial: true
+        },
+        {
+          name: "Eggs",
+          image: "example.jpg",
+          price: 850,
+          isOnDiscount: false,
+          discount: null,
+          isAvailable: true,
+          isSpecial: false
+        },
+        {
+          name: "Valami",
+          image: "example.jpg",
+          price: 1860,
+          isOnDiscount: false,
+          discount: null,
+          isAvailable: false,
+          isSpecial: true
+        },
+        {
+          name: "Pork fat",
+          image: "example.jpg",
+          price: 250,
+          isOnDiscount: true,
+          discount: 90,
+          isAvailable: true,
+          isSpecial: false
+        },
+      ]
     }
   },
-  methods: {
-    async getFact() {
-      await this.$http.get("https://meowfacts.herokuapp.com", {
-        params: {
-          count: 2,
-        }
-      })
-      .then(response => {
-        if (response.status == 200) this.randomFact = response.data.data;
-      })
-      .catch(err => {
-        if (err.response.status >= 500 && err.response.status <= 599) console.log("Something went wrong");
-      });
-    },
-  },
-  // mounted() {
-  //   this.getFact();
-  // }
 };
 </script>
 

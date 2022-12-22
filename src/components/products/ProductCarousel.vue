@@ -1,17 +1,32 @@
 <template>
-    <section class="articles-carousel">
+    <section class="products-carousel">
         <div class="wrapper">
-            <BlockTitle title="Featured products"/>
-            <Carousel :navigation="true" :pagination="false" :responsive="[[320, 1], [540, 2], [768, 3], [1200, 4]]">
-                <Slide class="articles-carousel-article" v-for="(product, index) in products" :key="index">
-                    <div class="articles-carousel-article_image">
-                        <picture>
-                            <img alt="moviepicture" :src="getImage(product.image)">
-                        </picture>
+            <BlockTitle title="Some products"/>
+            <Carousel
+                :navigationEnabled="true"
+                :paginationEnabled="false"
+                :perPageCustom="[[320, 1], [540, 2], [768, 3], [1200, 4]]"
+                :navigationPrevLabel="arrowLeft"
+                :navigationNextLabel="arrowRight"
+                :navigationClickTargetSize="15"
+                :loop="true">
+                <Slide class="slide" v-for="(product, index) in products" :key="index">
+                    <div class="products-carousel-product">
+                        <div class="products-carousel-product_image">
+                            <span v-if="product.isOnDiscount" class="badge badge-discount">Discount</span>
+                            <span v-if="product.isSpecial" class="badge badge-special">Special</span>
+                            <picture>
+                                <img alt="moviepicture" :src="getImage(product.image)">
+                            </picture>
+                        </div>
+                        <div class="products-carousel-product_desc">
+                            <h2 class="title">{{ product.name }}</h2>
+                            <div class="price" :class="{ discount : product.isOnDiscount }">{{ product.price }} RSD</div>
+                            <div v-if="product.isOnDiscount" class="discount-price">{{ product.discount }} RSD</div>
+                            <button @click.stop="write" v-if="product.isAvailable" class="cart-btn"><i class="fas fa-shopping-cart"></i> ADD TO CART</button>
+                            <small class="unavailable" v-else><i class="fas fa-times-circle"></i> Out of stock</small>
+                        </div>
                     </div>
-                    <h2 class="articles-carousel-article_title">{{ product.title }}</h2>
-                    <p class="articles-carousel-article_description">{{ product.desc }}</p>
-                    <button class="articles-carousel-article_btn"><i class="fas fa-shopping-cart"></i> ADD TO CART</button>
                 </Slide>
             </Carousel>
         </div>
@@ -19,56 +34,30 @@
 </template>
 
 <script>
-import { Slide } from "vue-carousel";
-import Carousel from "@/components/Carousel.vue";
-import BlockTitle from "@/components/BlockTitle.vue";
+import { Carousel, Slide } from "vue-carousel";
+import BlockTitle from "@/components/partials/BlockTitle.vue";
 
     export default {
         name: "ProductCarousel",
-        components: { Carousel, Slide, BlockTitle },
+        components: {
+            Carousel,
+            Slide,
+            BlockTitle,
+        },
+        props: { products: Array },
         data() {
             return {
-                products: [
-                    {
-                        title: "Article title",
-                        image: "example.jpg",
-                        desc: "Description to the article and the long text which is at the below of the article card"
-                    },
-                    {
-                        title: "Article title",
-                        image: "example.jpg",
-                        desc: "Description to the article and the long text which is at the below of the article card"
-                    },
-                    {
-                        title: "Article title",
-                        image: "example.jpg",
-                        desc: "Description to the article and the long text which is at the below of the article card"
-                    },
-                    {
-                        title: "Article title",
-                        image: "example.jpg",
-                        desc: "Description to the article and the long text which is at the below of the article card"
-                    },
-                    {
-                        title: "Article title",
-                        image: "example.jpg",
-                        desc: "Description to the article and the long text which is at the below of the article card"
-                    },
-                    {
-                        title: "Article title",
-                        image: "example.jpg",
-                        desc: "Description to the article and the long text which is at the below of the article card"
-                    },
-                    {
-                        title: "Article title",
-                        image: "example.jpg",
-                        desc: "Description to the article and the long text which is at the below of the article card"
-                    },
-                ]
+                arrowRight: '<i class="fas fa-chevron-right"></i>',
+                arrowLeft: '<i class="fas fa-chevron-left"></i>',
             }
         },
-        getImage(image) {
-            return require(`.../assets/images/${image}`);
-        },
+        methods: {
+            getImage(image) {
+                return require(`../../assets/images/${image}`);
+            },
+            write() {
+                console.log('test');
+            }
+        }
     }
 </script>

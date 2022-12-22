@@ -8,26 +8,26 @@
             :navigationClickTargetSize="20"
             :perPage='1'
             :loop="true"
-            :autoplay="false">
+            :autoplay="true">
 
             <slide class="slide">
                 <div class="box">
                     <h2 class="box-title">Ducks, pigs and much more</h2>
-                    <button class="box-btn">More</button>
+                    <a class="box-btn">More</a>
                 </div>
                 <img alt="heroimage" src="../assets/images/hero2.jpg">
             </slide>
             <slide class="slide">
                 <div class="box">
                     <h2 class="box-title">See our products</h2>
-                    <button class="box-btn">Webshop</button>
+                    <a class="box-btn">Webshop</a>
                 </div>
                 <img alt="heroimage" src="../assets/images/hero3.jpg">
             </slide>
             <slide class="slide">
                 <div class="box">
                     <h2 class="box-title">We are farmers</h2>
-                    <button class="box-btn">About us</button>
+                    <a class="box-btn">About us</a>
                 </div>
                 <img alt="heroimage" src="../assets/images/hero1.jpg">
             </slide>
