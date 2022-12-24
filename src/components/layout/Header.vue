@@ -51,7 +51,6 @@
         </nav>
 
         <div class="functions">
-          <button class="functions-btn"><i class="fas fa-balance-scale"></i></button>
           <button class="functions-btn"><span>9</span><i class="fas fa-heart"></i></button>
           <button class="functions-btn"><span>12</span><i class="fas fa-shopping-cart"></i></button>
           <button class="functions-btn js-hamburger-menu" @click="isOpenMobileNav = true"><i class="fas fa-bars"></i></button>
@@ -83,7 +82,6 @@
         </div>
 
         <div class="functions">
-          <button class="functions-btn"><i class="fas fa-balance-scale"></i></button>
           <button class="functions-btn"><span>0</span><i class="fas fa-heart"></i></button>
           <button class="functions-btn"><span>0</span><i class="fas fa-shopping-cart"></i></button>
         </div>

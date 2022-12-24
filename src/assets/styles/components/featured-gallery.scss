@@ -1,0 +1,140 @@
+.gallery {
+
+    .wrapper {
+        & > .header_title {
+            margin-bottom: 30px;
+        }
+    }
+
+    .gallery-list {
+        @include gridBox("center", 4, 0, 0);
+
+        &-card {
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            transition: transform .3s;
+            position: relative;
+            overflow: hidden;
+
+            picture {
+                @include paddingBottom(215, 300);
+            }
+
+            .overlay {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                visibility: hidden;
+                background-color: $c-e;
+                transition: .4s;
+                transform: translate3d(0, 100%, 0);
+
+                &_content {
+                    width: 100%;
+                    height: 100%;
+                    visibility: hidden;
+                    text-align: center;
+                    @include flexBox();
+                    flex-direction: column;
+
+                    &::before {
+                        @include absoluteFullSize();
+                        content: '';
+                        height: 6px!important;
+                        background-color: $c-theme;
+                    }
+
+                    .icons {
+                        margin: 20px 0;
+                        visibility: hidden;
+                        pointer-events: none;
+
+                        i {
+                            transition: .3s;
+                            border-radius: 50%;
+                            padding: 15px;
+                            font-size: 14px;
+                            background-color: $c-white;
+                            color: $c-theme;
+                            border: 2px solid $c-theme;
+                            margin: 0 5px;
+
+                            &:hover {
+                                background-color: $c-theme;
+                                color: $c-white;
+                            }
+
+                            @media #{$r-max-xs} {
+                                padding: 10px;
+                                margin: 0 5px;
+                            }
+                        }
+
+                        @media #{$r-max-l} {
+                            margin: 10px 0 0;
+                        }
+
+                        @media #{$r-max-m} {
+                            margin: 5px 0;
+                        }
+                    }
+
+                    .hover_title {
+                        margin: 5px;
+                        font-size: 15px;
+                        line-height: 25px;
+                        color: $c-theme;
+                        font-weight: 700;
+                        text-transform: uppercase;
+
+                        @media #{$r-max-m} {
+                            margin: 0;
+                        }
+                    }
+
+                    .hover_sub {
+                        margin: 5px;
+                        font-size: 14px;
+                        line-height: 25px;
+                        color: $c-4;
+                        font-weight: 300;
+
+                        @media #{$r-max-m} {
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+
+            &:hover, &:focus {
+
+                .overlay {
+                    visibility: visible;
+                    transform: translate3d(0, 0, 0);
+
+                    .overlay_content {
+                        visibility: visible;
+
+                        .icons {
+                            visibility: visible;
+                            pointer-events: visible;
+                        }
+                    }
+                }
+            }
+        }
+
+        @media #{$r-max-m} {
+            display: grid;
+            grid-template-columns: repeat(3, 33%);
+        }
+
+        @media #{$r-max-s} {
+            display: grid;
+            grid-template-columns: repeat(2, 50%);
+        }
+    }
+}

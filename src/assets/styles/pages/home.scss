@@ -1,9 +1,131 @@
 @import "../components/hero.scss";
 @import "../components/featured-categories.scss";
 @import "../components/featured-products.scss";
+@import "../components/featured-gallery.scss";
 
 .home {
     min-height: 100vh;
+
+    .more {
+      width: 100%;
+      margin: 0 auto 50px;
+      @include flexBox();
+      &-button {
+        @include btn($c-white, $c-red, $c-theme);
+        text-transform: uppercase;
+        font-weight: 700;
+
+        i {
+          color: $c-white;
+          font-size: 16px;
+        }
+      }
+    }
+
+    .bg {
+      width: 100%;
+      height: 70vh;
+      background-image: url('../../src/assets/images/20200522_112513.jpg');
+      background-position: center;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      position: relative;
+
+      &::before {
+        @include absoluteFullSize();
+        content: "";
+        background-color: rgba($c-black, .65);
+      }
+
+      &-box {
+          z-index: 5;
+          width: 90%;
+          margin: 0 auto;
+          padding: 0 15px;
+          text-align: center;
+
+          @media #{$r-max-s} {
+            width: 100%;
+          }
+
+          &--title {
+              font-size: 40px;
+              line-height: 40px;
+              color: $c-white;
+              font-weight: 700;
+              margin: 30px 0 0;
+
+              @media #{$r-max-xl} {
+                  font-size: 32px;
+              }
+
+              @media #{$r-max-l} {
+                  font-size: 32px;
+              }
+
+              @media #{$r-max-m} {
+                  font-size: 26px;
+              }
+          }
+
+          &--subtitle {
+              font-size: 16px;
+              line-height: 40px;
+              color: #d8d8d8;
+              font-weight: 400;
+
+              @media #{$r-max-s} {
+                  font-size: 14px;
+                  line-height: 22px;
+              }
+          }
+
+          &_btn {
+              display: inline-block;
+              font-size: 15px;
+              line-height: 32px;
+              color: $c-white;
+              font-weight: 700;
+              border-radius: 4px;
+              border: none;
+              cursor: pointer;
+              transition: .3s;
+              margin: 40px 15px;
+              padding: 12px 30px;
+              position: relative;
+              background-color: $c-red;
+              text-transform: uppercase;
+
+              &.ad-btn {
+                background-color: $c-middleblue;
+              }
+
+              @media #{$r-max-xs} {
+                margin: 15px;
+              }
+
+              &::after {
+                  position: absolute;
+                  content: '';
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 3px;
+                  border-radius: 4px;
+                  background-color: $c-white;
+              }
+
+              &:hover {
+                background-color: $c-theme;
+              }
+          }
+      }
+
+      @media #{$r-max-m} {
+        height: 80vh;
+      }
+    }
 
     // .mytabs {
     //   .tabs-title {

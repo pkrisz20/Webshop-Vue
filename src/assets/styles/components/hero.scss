@@ -70,7 +70,7 @@
                             padding: 12px 30px;
                             background: transparent;
                             color: $c-white;
-                            font-size: 24px;
+                            font-size: 20px;
                             font-weight: 600;
                             text-transform: uppercase;
                             transition: .3s ease;
@@ -78,9 +78,6 @@
                             &:hover {
                                 background-color: $c-white;
                                 color: $c-black;
-                            }
-                            @media #{$r-max-m} {
-                                font-size: 20px;
                             }
                             @media #{$r-max-s} {
                                 font-size: 18px;

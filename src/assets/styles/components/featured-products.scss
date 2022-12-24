@@ -1,5 +1,5 @@
     .products-carousel {
-        padding: 80px 0;
+        padding: 80px 0 40px;
       .header_title {
         margin-bottom: 40px;
       }
@@ -30,6 +30,7 @@
           position: relative;
           width: 100%;
           height: auto;
+          overflow: hidden;
           picture {
             @include paddingBottom(100, 130);
           }
@@ -66,6 +67,7 @@
             font-size: 22px;
             color: $c-6;
             margin: 5px 0 0;
+            text-align: center;
           }
           .price {
             font-size: 20px;
@@ -86,7 +88,7 @@
             margin: 5px 0;
           }
           .cart-btn {
-            @include btn($c-a, $c-dark-theme);
+            @include btn($c-a, $c-dark);
             width: 100%;
 
             i {

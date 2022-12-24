@@ -1,7 +1,7 @@
 <template>
     <section class="products-carousel">
         <div class="wrapper">
-            <BlockTitle title="Some products"/>
+            <BlockTitle title="Products" subtitle="Some of our featured products" />
             <Carousel
                 :navigationEnabled="true"
                 :paginationEnabled="false"
@@ -11,7 +11,7 @@
                 :navigationClickTargetSize="15"
                 :loop="true">
                 <Slide class="slide" v-for="(product, index) in products" :key="index">
-                    <div class="products-carousel-product">
+                    <div @click="routeToDetails(product.id)" class="products-carousel-product">
                         <div class="products-carousel-product_image">
                             <span v-if="product.isOnDiscount" class="badge badge-discount">Discount</span>
                             <span v-if="product.isSpecial" class="badge badge-special">Special</span>
@@ -23,7 +23,7 @@
                             <h2 class="title">{{ product.name }}</h2>
                             <div class="price" :class="{ discount : product.isOnDiscount }">{{ product.price }} RSD</div>
                             <div v-if="product.isOnDiscount" class="discount-price">{{ product.discount }} RSD</div>
-                            <button @click.stop="write" v-if="product.isAvailable" class="cart-btn"><i class="fas fa-shopping-cart"></i> ADD TO CART</button>
+                            <button @click.stop="addCart(product.id)" v-if="product.isAvailable" class="cart-btn"><i class="fas fa-shopping-cart"></i> ADD TO CART</button>
                             <small class="unavailable" v-else><i class="fas fa-times-circle"></i> Out of stock</small>
                         </div>
                     </div>
@@ -52,11 +52,14 @@ import BlockTitle from "@/components/partials/BlockTitle.vue";
             }
         },
         methods: {
-            getImage(image) {
+            getImage (image) {
                 return require(`../../assets/images/${image}`);
             },
-            write() {
-                console.log('test');
+            addCart (productId) {
+                console.log(`Added to cart ${productId}`);
+            },
+            routeToDetails (id) {
+                this.$router.push({ path: `/product/${id}` });
             }
         }
     }
