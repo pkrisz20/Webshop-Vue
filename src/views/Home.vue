@@ -223,7 +223,7 @@ export default {
           day: 31,
           month: "May",
           year: 2020,
-          image: "20200505_164046.jpg",
+          image: "received_3609522925785043.jpeg",
           author: "Rita Tot Horgosi",
           commentsCount: 2
         },
@@ -232,7 +232,7 @@ export default {
           day: 4,
           month: "April",
           year: 2021,
-          image: "20200505_164046.jpg",
+          image: "example1.jpg",
           author: "Janos",
           commentsCount: 6
         },
@@ -241,7 +241,7 @@ export default {
           day: 6,
           month: "Dec",
           year: 2021,
-          image: "20200505_164046.jpg",
+          image: "example2.jpg",
           author: "Zoltan Tot Horgosi",
           commentsCount: 3
         },
@@ -250,7 +250,7 @@ export default {
           day: 14,
           month: "Jun",
           year: 2020,
-          image: "20200505_164046.jpg",
+          image: "20200522_112513.jpg",
           author: "Zoltan Tot Horgosi",
           commentsCount: 10
         },
@@ -259,7 +259,7 @@ export default {
           day: 27,
           month: "Sep",
           year: 2018,
-          image: "20200505_164046.jpg",
+          image: "20200505_164058.jpg",
           author: "Rita Horgosi",
           commentsCount: 1
         },
