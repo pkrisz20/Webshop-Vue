@@ -21,6 +21,11 @@
       <a class="more-button" href="/gallery"><i class="fas fa-arrow-right"></i> Watch Gallery</a>
     </div>
 
+    <FeaturedBlogs :blogs="this.blogs" />
+    <div class="more">
+      <a class="more-button" href="/blogs"><i class="fas fa-arrow-right"></i> Visit Our Blog</a>
+    </div>
+
     <!-- <section class="mytabs">
       <div class="wrapper">
 
@@ -43,6 +48,7 @@ import Hero from "@/components/Hero.vue";
 import FeaturedCategories from "@/components/FeaturedCategories.vue";
 import ProductCarousel from "@/components/products/ProductCarousel.vue";
 import FeaturedGallery from "@/components/FeaturedGallery.vue";
+import FeaturedBlogs from "@/components/FeaturedBlogs.vue";
 
 export default {
   name: "Home",
@@ -50,7 +56,8 @@ export default {
     Hero,
     FeaturedCategories,
     ProductCarousel,
-    FeaturedGallery
+    FeaturedGallery,
+    FeaturedBlogs
   },
   data() {
     return {
@@ -199,6 +206,62 @@ export default {
           name: "Goose as adult",
           category: "Goose",
           source: "12.jpg"
+        },
+      ],
+      blogs: [
+        {
+          title: "Blog title",
+          day: 24,
+          month: "March",
+          year: 2019,
+          image: "20200505_164046.jpg",
+          author: "Zoltan Tot Horgosi",
+          commentsCount: 12
+        },
+        {
+          title: "Event title",
+          day: 31,
+          month: "May",
+          year: 2020,
+          image: "20200505_164046.jpg",
+          author: "Rita Tot Horgosi",
+          commentsCount: 2
+        },
+        {
+          title: "Children visited our farm",
+          day: 4,
+          month: "April",
+          year: 2021,
+          image: "20200505_164046.jpg",
+          author: "Janos",
+          commentsCount: 6
+        },
+        {
+          title: "We are tired, but we're going further",
+          day: 6,
+          month: "Dec",
+          year: 2021,
+          image: "20200505_164046.jpg",
+          author: "Zoltan Tot Horgosi",
+          commentsCount: 3
+        },
+        {
+          title: "Pigs are so cute",
+          day: 14,
+          month: "Jun",
+          year: 2020,
+          image: "20200505_164046.jpg",
+          author: "Zoltan Tot Horgosi",
+          commentsCount: 10
+        },
+        {
+          title: "Goose are easy to handle",
+          day: 27,
+          month: "Sep",
+          year: 2018,
+          image: "20200505_164046.jpg",
+          author: "Rita Horgosi",
+          commentsCount: 1
         },
       ]
     }
