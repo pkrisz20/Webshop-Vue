@@ -14,16 +14,22 @@ export default {
 </script>
 
 <style lang="scss">
-html, body {
+html {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
   font-family: $main-font;
   @include scrollbars(7px, rgba($c-theme, .6), $c-d);
+
+  &:focus-within {
+    scroll-behavior: smooth;
+  }
 }
 
-html:focus-within {
-  scroll-behavior: smooth;
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
 .disable-interactions {
