@@ -9,7 +9,7 @@
     export default {
         name: "BlockTitle",
         props: {
-            title: String,
+            title: { type: String, required: true },
             subtitle: String
         }
     }
@@ -26,6 +26,13 @@
             width: auto;
             position: relative;
 
+            @media #{$r-max-l} {
+                font-size: 28px;
+            }
+            @media #{$r-max-m} {
+                font-size: 25px;
+            }
+
             &::after {
                 position: absolute;
                 content: "";
@@ -40,6 +47,10 @@
         &-sub {
             font-size: 20px;
             margin-top: 20px;
+
+            @media #{$r-max-l} {
+                font-size: 18px;
+            }
         }
     }
 </style>

@@ -4,11 +4,10 @@
             <BlockTitle title="Our Blog" subtitle="You can see the events, what happened to us" />
             <Carousel
                 :navigationEnabled="true"
-                :paginationEnabled="false"
+                :paginationEnabled="true"
                 :perPageCustom="[[320, 1], [540, 2], [768, 3], [1200, 4]]"
                 :navigationPrevLabel="arrowLeft"
                 :navigationNextLabel="arrowRight"
-                :navigationClickTargetSize="15"
                 :loop="true">
                 <Slide class="blogs-container" v-for="(blog, index) in blogs" :key="index">
                     <article class="blogs-container-card">

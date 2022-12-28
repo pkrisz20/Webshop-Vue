@@ -20,6 +20,9 @@
                 </div>
             </div>
         </div>
+        <div class="more">
+            <a class="more-button" href="/gallery"><i class="fas fa-arrow-right"></i> Watch Gallery</a>
+        </div>
     </section>
 </template>
 

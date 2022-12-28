@@ -8,7 +8,6 @@
                 :perPageCustom="[[320, 1], [540, 2], [768, 3], [1200, 4]]"
                 :navigationPrevLabel="arrowLeft"
                 :navigationNextLabel="arrowRight"
-                :navigationClickTargetSize="15"
                 :loop="true">
                 <Slide class="slide" v-for="(product, index) in products" :key="index">
                     <div @click="routeToDetails(product.id)" class="products-carousel-product">

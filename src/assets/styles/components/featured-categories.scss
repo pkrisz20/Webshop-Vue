@@ -13,6 +13,12 @@
         position: relative;
         cursor: pointer;
         transition: .3s;
+        @media #{$r-max-m} {
+            padding: 60px 40px;
+        }
+        @media #{$r-max-s} {
+            padding: 50px 30px;
+        }
 
         svg {
             width: 65px;

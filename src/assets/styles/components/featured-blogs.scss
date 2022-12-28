@@ -2,16 +2,14 @@
     width: 100%;
     height: auto;
 
+    @media #{$r-max-l} {
+        padding: 40px 0;
+    }
+
     & > .wrapper {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        @media #{$r-max-xl} {
-            width: 90%;
-            margin: 10px auto 100px;
-            padding: 0;
-            display: flex;
-        }
 
         & > .header_title {
             margin-bottom: 30px;
@@ -24,6 +22,51 @@
         i {
             font-size: 30px;
             color: $c-white;
+            @media #{$r-max-m} {
+                font-size: 24px;
+            }
+        }
+        @media #{$r-max-xl} {
+            padding: 10px !important;
+        }
+
+        &.VueCarousel-navigation-prev {
+            @media #{$r-max-m} {
+                left: 15px !important;
+            }
+            @media #{$r-max-xs} {
+                left: 20px !important;
+            }
+        }
+
+        &.VueCarousel-navigation-next {
+            @media #{$r-max-m} {
+                right: 15px !important;
+            }
+            @media #{$r-max-xs} {
+                right: 20px !important;
+            }
+        }
+    }
+
+    .VueCarousel-pagination {
+        .VueCarousel-dot-container {
+            margin-top: 0 !important;
+            .VueCarousel-dot {
+                padding: 8px !important;
+                background-color: $c-a !important;
+                outline: none;
+                transition: all .3s ease-in-out;
+
+                &--active {
+                    background-color: $c-dark3 !important;
+                    width: 20px !important;
+                    border-radius: 20px !important;
+                }
+            }
+        }
+        @media #{$r-max-m} {
+            display: none;
         }
     }
 
@@ -48,8 +91,7 @@
                 top: 0;
                 right: 0;
                 z-index: 2;
-                width: 60px;
-                height: 60px;
+                padding: 7px;
                 @include flexBox();
                 flex-direction: column;
                 background-color: $c-dark3;
@@ -96,7 +138,7 @@
             }
 
             & > .title {
-                transition: .2s;
+                transition: .3s;
                 margin: 5px 10px;
                 font-size: 18px;
                 line-height: 26px;
@@ -113,6 +155,7 @@
                 font-size: 15px;
                 color: $c-7;
                 margin: 0 10px;
+                flex-wrap: wrap;
             }
 
             .btn {
@@ -139,18 +182,8 @@
                 }
 
                 .title {
-                    color: $c-theme;
+                    color: $c-dark3;
                 }
-            }
-
-            @media #{$r-max-l} {
-                width: 100%;
-                height: 340px;
-            }
-
-            @media #{$r-max-l} {
-                width: 100%;
-                height: 430px;
             }
         }
     }

@@ -4,7 +4,7 @@
     <FeaturedCategories />
     <ProductCarousel :products="this.products" />
     <div class="more">
-      <a class="more-button" href="/webshop"><i class="fas fa-arrow-right"></i> Go to Webshop</a>
+      <a class="more-button" href="/webshop"><i class="fas fa-arrow-right"></i> Visit Webshop</a>
     </div>
 
     <section class="bg">
@@ -17,9 +17,6 @@
     </section>
 
     <FeaturedGallery :images="this.gallery" />
-    <div class="more">
-      <a class="more-button" href="/gallery"><i class="fas fa-arrow-right"></i> Watch Gallery</a>
-    </div>
 
     <FeaturedBlogs :blogs="this.blogs" />
     <div class="more">
@@ -210,6 +207,60 @@ export default {
       ],
       blogs: [
         {
+          title: "Blog title",
+          day: 24,
+          month: "March",
+          year: 2019,
+          image: "20200505_164046.jpg",
+          author: "Zoltan Tot Horgosi",
+          commentsCount: 12
+        },
+        {
+          title: "Event title",
+          day: 31,
+          month: "May",
+          year: 2020,
+          image: "received_3609522925785043.jpeg",
+          author: "Rita Tot Horgosi",
+          commentsCount: 2
+        },
+        {
+          title: "Children visited our farm",
+          day: 4,
+          month: "April",
+          year: 2021,
+          image: "example1.jpg",
+          author: "Janos",
+          commentsCount: 6
+        },
+        {
+          title: "We are tired, but we're going further",
+          day: 6,
+          month: "Dec",
+          year: 2021,
+          image: "example2.jpg",
+          author: "Zoltan Tot Horgosi",
+          commentsCount: 3
+        },
+        {
+          title: "Pigs are so cute",
+          day: 14,
+          month: "Jun",
+          year: 2020,
+          image: "20200522_112513.jpg",
+          author: "Zoltan Tot Horgosi",
+          commentsCount: 10
+        },
+        {
+          title: "Goose are easy to handle",
+          day: 27,
+          month: "Sep",
+          year: 2018,
+          image: "20200505_164058.jpg",
+          author: "Rita Horgosi",
+          commentsCount: 1
+        },
+                {
           title: "Blog title",
           day: 24,
           month: "March",
