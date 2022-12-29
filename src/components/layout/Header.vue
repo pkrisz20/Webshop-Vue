@@ -539,6 +539,7 @@ export default {
               height: 3px;
               background: $c-theme;
               transition: width .3s ease;
+              border-radius: 5px;
             }
 
             &:hover::after {
