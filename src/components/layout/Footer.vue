@@ -91,6 +91,16 @@
 
         &-container {
             @include gridBox();
+
+            @media #{$r-max-xl} {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            @media #{$r-max-m} {
+                @include flexBox("center", "flex-start", 30px);
+                flex-direction: column;
+                margin: 0;
+            }
         }
 
         &-col {
@@ -143,6 +153,7 @@
 
             & > h4 {
                 color: $c-d;
+                text-align: center;
             }
         }
     }

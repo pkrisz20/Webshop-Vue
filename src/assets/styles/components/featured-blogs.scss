@@ -31,6 +31,9 @@
         }
 
         &.VueCarousel-navigation-prev {
+            @media #{$r-max-xxl} {
+                left: 10px !important;
+            }
             @media #{$r-max-m} {
                 left: 15px !important;
             }
@@ -40,6 +43,9 @@
         }
 
         &.VueCarousel-navigation-next {
+            @media #{$r-max-xxl} {
+                right: 10px !important;
+            }
             @media #{$r-max-m} {
                 right: 15px !important;
             }
