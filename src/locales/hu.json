@@ -1,3 +1,11 @@
-[
-    
-]
+{
+    "nav": {
+        "home": "Főoldal",
+        "about": "Rólunk",
+        "webshop": "Webáruház",
+        "discounts": "Kedvezmények",
+        "gallery": "Galléria",
+        "blog": "Blog",
+        "contact": "Kapcsolat"
+    }
+}

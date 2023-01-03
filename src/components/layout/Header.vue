@@ -15,16 +15,10 @@
           <a class="icon twitter"><i class="fab fa-twitter"></i></a>
         </div>
         <div class="lang dropdown js-lang-switcher">
-          <div @click="isOpenLang = !isOpenLang" class="dropdown-link">{{ $i18n.locale }}</div>
+          <div @click="isOpenLang = !isOpenLang" class="dropdown-link">{{ $i18n.locale.toUpperCase() }}</div>
 
           <ul v-show="isOpenLang" class="dropdown-list">
-            <li class="dropdown-list-item" @click="setLocale($event)" v-for="(lang, i) in $i18n.availableLocales" :key="`Lang${i}`">{{ lang }}</li>
-            <!-- <li class="dropdown-list-item">
-              <a href="/sr">SR</a>
-            </li>
-            <li class="dropdown-list-item">
-              <a href="/hu">HU</a>
-            </li> -->
+            <li class="dropdown-list-item" v-show="lang !== $i18n.locale" @click="setLocale(lang)" v-for="(lang, index) in $i18n.availableLocales" :key="index">{{ lang.toUpperCase() }}</li>
           </ul>
         </div>
       </div>
@@ -40,13 +34,13 @@
 
         <nav class="nav">
           <ul>
-            <li><router-link :to="`/${$i18n.locale}`">Home</router-link></li>
-            <li><router-link :to="`/${$i18n.locale}/about`">About us</router-link></li>
-            <li><router-link :to="`/${$i18n.locale}/webshop`">Webshop</router-link></li>
-            <li><router-link :to="`/${$i18n.locale}/discounts`">Discounts</router-link></li>
-            <li><router-link :to="`/${$i18n.locale}/gallery`">Gallery</router-link></li>
-            <li><router-link :to="`/${$i18n.locale}/blog`">Blog</router-link></li>
-            <li><router-link :to="`/${$i18n.locale}/contact`">Contact</router-link></li>
+            <li><router-link :to="`/${$i18n.locale}`">{{ $t("nav.home") }}</router-link></li>
+            <li><router-link :to="`/${$i18n.locale}/about`">{{ $t("nav.about") }}</router-link></li>
+            <li><router-link :to="`/${$i18n.locale}/webshop`">{{ $t("nav.webshop") }}</router-link></li>
+            <li><router-link :to="`/${$i18n.locale}/discounts`">{{ $t("nav.discounts") }}</router-link></li>
+            <li><router-link :to="`/${$i18n.locale}/gallery`">{{ $t("nav.gallery") }}</router-link></li>
+            <li><router-link :to="`/${$i18n.locale}/blog`">{{ $t("nav.blog") }}</router-link></li>
+            <li><router-link :to="`/${$i18n.locale}/contact`">{{ $t("nav.contact") }}</router-link></li>
           </ul>
         </nav>
 
@@ -96,8 +90,7 @@
 
         <div class="langs">
           <div class="langs-item current-lang">{{ $i18n.locale }}</div>
-          <button class="langs-item">sr</button>
-          <button class="langs-item">hu</button>
+          <button class="langs-item" v-show="lang !== $i18n.locale" v-for="(lang, index) in $i18n.availableLocales" :key="index" @click="setLocale(lang)">{{ lang.toUpperCase() }}</button>
         </div>
 
         <div class="socials">
@@ -115,13 +108,13 @@
 
         <nav class="nav">
           <ul>
-            <li><router-link :to="`/${$i18n.locale}`">Home</router-link></li>
-            <li><router-link :to="`/${$i18n.locale}/about`">About us</router-link></li>
-            <li><router-link :to="`/${$i18n.locale}/webshop`">Webshop</router-link></li>
-            <li><router-link :to="`/${$i18n.locale}/discounts`">Discounts</router-link></li>
-            <li><router-link :to="`/${$i18n.locale}/gallery`">Gallery</router-link></li>
-            <li><router-link :to="`/${$i18n.locale}/blog`">Blog</router-link></li>
-            <li><router-link :to="`/${$i18n.locale}/contact`">Contact</router-link></li>
+            <li><router-link :to="`/${$i18n.locale}`">{{ $t("nav.home") }}</router-link></li>
+            <li><router-link :to="`/${$i18n.locale}/about`">{{ $t("nav.about") }}</router-link></li>
+            <li><router-link :to="`/${$i18n.locale}/webshop`">{{ $t("nav.webshop") }}</router-link></li>
+            <li><router-link :to="`/${$i18n.locale}/discounts`">{{ $t("nav.discounts") }}</router-link></li>
+            <li><router-link :to="`/${$i18n.locale}/gallery`">{{ $t("nav.gallery") }}</router-link></li>
+            <li><router-link :to="`/${$i18n.locale}/blog`">{{ $t("nav.blog") }}</router-link></li>
+            <li><router-link :to="`/${$i18n.locale}/contact`">{{ $t("nav.contact") }}</router-link></li>
           </ul>
         </nav>
       </div>
@@ -146,10 +139,10 @@ export default {
     focusSearch() {
       this.$refs.search.focus();
     },
-    setLocale(event) {
-      // console.log(event.target.value);
-      this.$i18n.locale = event.target.value;
-      this.$router.push({ params: { lang: event.target.value } });
+    setLocale(language) {
+      this.$i18n.locale = language;
+      this.$router.push({ params: { lang: language } });
+      this.isOpenLang = false;
     }
   },
   watch: {
@@ -168,12 +161,11 @@ export default {
       if (event.target.closest('.js-mobile-menu')) return;
       this.isOpenMobileNav = false;
     });
-    // console.log(this.$i18n);
   }
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .header {
   position: fixed;
   top: 0;
@@ -415,20 +407,13 @@ export default {
             text-align: center;
             font-size: 16px;
             cursor: pointer;
-            transition: .2s ease-in-out;
+            transition: all .2s ease-in-out;
             background-color: $c-dark-blue;
+            color: $c-a;
 
             &:hover {
               background-color: $c-theme;
-
-              a {
-                color: $c-white;
-              }
-            }
-
-            a {
-              color: $c-a;
-              transition: .2s ease-in-out;
+              color: $c-white;
             }
 
             &:not(:last-child) {

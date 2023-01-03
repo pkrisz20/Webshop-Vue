@@ -1,3 +1,11 @@
-[
-    
-]
+{
+    "nav": {
+        "home": "Glavna",
+        "about": "O nama",
+        "webshop": "Webshop",
+        "discounts": "Popusti",
+        "gallery": "Galerija",
+        "blog": "Blog",
+        "contact": "Kontakt"
+    }
+}

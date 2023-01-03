@@ -1,3 +1,11 @@
-[
-    
-]
+{
+    "nav": {
+        "home": "Home",
+        "about": "About us",
+        "webshop": "Webshop",
+        "discounts": "Discounts",
+        "gallery": "Gallery",
+        "blog": "Blog",
+        "contact": "Contact"
+    }
+}

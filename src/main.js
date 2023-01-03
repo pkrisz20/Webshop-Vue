@@ -54,7 +54,7 @@ Vue.mixin({
 router.beforeEach((to, from, next) => {
   let language = to.params.lang;
   if (!language) {
-    language = 'en';
+    language = process.env.VUE_APP_I18N_FALLBACK_LOCALE || 'en';
   }
 
   i18n.locale = language;
