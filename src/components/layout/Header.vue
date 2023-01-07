@@ -59,7 +59,9 @@
     <div class="header-bottom">
       <div class="wrapper">
         <div class="search">
-          <input class="search-input" type="text" ref="search" placeholder="Search..." />
+        <!-- WATCH FOR V-MODEL, SOMETIMES NEEDS $EVENT.TARGET.VALUE -->
+          <input class="search-input" v-model="searchValue" type="text" ref="search" placeholder="Search..." />
+          <i v-show="searchValue.length > 0" @click="clearSearch" class="fas fa-times search-close"></i>
           <button @click="focusSearch" class="search-btn"><i class="fas fa-search"></i></button>
 
           <!-- <div class="search-results">
@@ -133,7 +135,8 @@ export default {
     return {
       scrollPosition: 0,
       isOpenLang: false,
-      isOpenMobileNav: false
+      isOpenMobileNav: false,
+      searchValue: ""
     }
   },
   methods: {
@@ -142,6 +145,9 @@ export default {
     },
     focusSearch() {
       this.$refs.search.focus();
+    },
+    clearSearch() {
+      this.searchValue = "";
     },
     setLocale(language) {
       this.$i18n.locale = language;
@@ -583,11 +589,26 @@ export default {
         @include flexBox();
         position: relative;
 
+        &-close {
+          position: absolute;
+          top: 50%;
+          right: 60px;
+          transform: translateY(-50%);
+          color: $c-red;
+          font-size: 20px;
+          cursor: pointer;
+
+          @media #{$r-max-l} {
+            right: 50px;
+            font-size: 18px;
+          }
+        }
+
         &-input {
           height: 40px;
           width: 350px;
           border-radius: 25px 0 0 25px;
-          padding: 0 15px;
+          padding: 0 40px 0 15px;
           font-size: 16px;
           outline: none;
           background-color: $c-e;
