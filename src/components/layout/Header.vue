@@ -15,10 +15,14 @@
           <a class="icon twitter"><i class="fab fa-twitter"></i></a>
         </div>
         <div class="lang dropdown js-lang-switcher">
-          <div @click="isOpenLang = !isOpenLang" class="dropdown-link">{{ $i18n.locale.toUpperCase() }}</div>
+          <div @click="isOpenLang = !isOpenLang" class="dropdown-link">
+            <img :alt="`flag-${$i18n.locale}`" :src="`/images/flag-${$i18n.locale}.png`"/>{{ $i18n.locale.toUpperCase() }}
+          </div>
 
           <ul v-show="isOpenLang" class="dropdown-list">
-            <li class="dropdown-list-item" v-show="lang !== $i18n.locale" @click="setLocale(lang)" v-for="(lang, index) in $i18n.availableLocales" :key="index">{{ lang.toUpperCase() }}</li>
+            <li class="dropdown-list-item" v-show="lang !== $i18n.locale" @click="setLocale(lang)" v-for="(lang, index) in $i18n.availableLocales" :key="index">
+              <img :alt="`flag-${lang}`" :src="`/images/flag-${lang}.png`"/>{{ lang.toUpperCase() }}
+            </li>
           </ul>
         </div>
       </div>
@@ -386,6 +390,17 @@ export default {
         cursor: pointer;
         border-radius: 8px;
         transition: all .3s ease-in-out;
+        display: inline-flex;
+        gap: 5px;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          width: 25px;
+          height: 15px;
+          object-fit: cover;
+          object-position: center;
+        }
 
         &:hover {
           color: $c-white;
@@ -396,20 +411,31 @@ export default {
           border-radius: 5px;
           overflow: hidden;
           position: absolute;
-          top: 30px;
+          top: 31px;
           left: 50%;
           transform: translateX(-50%);
-          width: 50px;
+          width: 70px;
           z-index: 50;
 
           &-item {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            width: 100%;
             padding: 5px;
-            text-align: center;
             font-size: 16px;
             cursor: pointer;
             transition: all .2s ease-in-out;
             background-color: $c-dark-blue;
             color: $c-a;
+
+            img {
+              width: 25px;
+              height: 15px;
+              object-fit: cover;
+              object-position: center;
+            }
 
             &:hover {
               background-color: $c-theme;
