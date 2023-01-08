@@ -63,8 +63,8 @@
           <i v-show="searchValue.length > 0" @click="clearSearch" class="fas fa-times search-close"></i>
           <button @click="focusSearch" class="search-btn"><i class="fas fa-search"></i></button>
 
-          <!-- <div class="search-results">
-            <h4 class="search-results-header">Results: 5</h4>
+          <div class="search-results">
+            <h4 class="search-results-header">{{ $t('general.results') }}: 5</h4>
             <div class="container">
               <router-link class="container_box" to="/">
                 <div class="container_box--image">
@@ -77,7 +77,7 @@
                 <div class="container_box--date">Kategoria</div>
               </router-link>
             </div>
-          </div> -->
+          </div>
         </div>
 
         <div class="functions">
