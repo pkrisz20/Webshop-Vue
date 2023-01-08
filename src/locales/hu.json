@@ -35,6 +35,7 @@
     "products": {
         "discount": "Akció",
         "special": "Kiemelt",
+        "available": "Elérhető",
         "out_of_stock": "Nincs raktáron",
         "add_cart": "Kosárhoz adás"
     }

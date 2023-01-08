@@ -35,6 +35,7 @@
     "products": {
         "discount": "Popust",
         "special": "Istaknuto",
+        "available": "Dostupan",
         "out_of_stock": "Nema na lageru",
         "add_cart": "Dodaj u korpu"
     }

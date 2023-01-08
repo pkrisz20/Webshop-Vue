@@ -150,6 +150,7 @@
             @include btn($c-a, $c-dark);
             transition: all .2s ease-in-out;
             border-radius: 25px;
+            text-transform: uppercase;
 
             i {
               margin-right: 5px;

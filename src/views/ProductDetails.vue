@@ -21,22 +21,22 @@
                     <h1 class="details-desc-title">{{ productDetails.name }}</h1>
                     <div class="details-desc-discount-price" v-if="productDetails.isOnDiscount">{{ productDetails.discount }} RSD</div>
                     <div class="details-desc-price" :class="{ discount : productDetails.isOnDiscount }">{{ productDetails.price }} RSD</div>
+                    <small class="details-desc-unavailable" v-if="!productDetails.isAvailable"><i class="fas fa-times-circle"></i> {{ $t('products.out_of_stock') }}</small>
 
-                    <div class="details-desc-functions" v-if="productDetails.isAvailable">
-                        <small class="available"><i class="fas fa-check-circle"></i> Available</small>
+                    <div class="details-desc-functions">
+                        <small v-if="productDetails.isAvailable" class="available"><i class="fas fa-check-circle"></i> {{ $t('products.available') }}</small>
 
-                        <div class="quantities">
+                        <div class="quantities" v-if="productDetails.isAvailable">
                             <button @click="decreaseQuantity()" class="quantities-btn minus">-</button>
                             <input class="quantities-input" type="number" v-model="quantityValue" min="1"/>
                             <button @click="increaseQuantity()" class="quantities-btn plus">+</button>
                         </div>
 
                         <div class="buttons">
-                            <button class="buttons-cart" @click="addCart(productDetails.id)"><i class="fas fa-shopping-cart"></i> ADD TO CART</button>
+                            <button v-if="productDetails.isAvailable" class="buttons-cart" @click="addCart(productDetails.id)"><i class="fas fa-shopping-cart"></i> {{ $t('products.add_cart') }}</button>
                             <button class="buttons-fav" @click="addFavs(productDetails.id)"><i class="fas fa-heart"></i></button>
                         </div>
                     </div>
-                    <small class="details-desc-unavailable" v-else-if="!productDetails.isAvailable"><i class="fas fa-times-circle"></i> Out of stock</small>
                 </div>
             </div>
             <Tabs class="tabs">

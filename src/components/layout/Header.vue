@@ -63,7 +63,7 @@
           <i v-show="searchValue.length > 0" @click="clearSearch" class="fas fa-times search-close"></i>
           <button @click="focusSearch" class="search-btn"><i class="fas fa-search"></i></button>
 
-          <div class="search-results">
+          <!-- <div class="search-results">
             <h4 class="search-results-header">{{ $t('general.results') }}: 5</h4>
             <div class="container">
               <router-link class="container_box" to="/">
@@ -77,7 +77,7 @@
                 <div class="container_box--date">Kategoria</div>
               </router-link>
             </div>
-          </div>
+          </div> -->
         </div>
 
         <div class="functions">
@@ -124,6 +124,8 @@
         </nav>
       </div>
     </div>
+
+    <div @click="scrollUp" :class="{ show : scrollPosition > 500 }" class="upscroller"><i class="fas fa-chevron-up"></i></div>
   </header>
 </template>
 
@@ -139,19 +141,22 @@ export default {
     }
   },
   methods: {
-    updateScroll() {
+    updateScroll () {
       this.scrollPosition = window.scrollY;
     },
-    focusSearch() {
+    focusSearch () {
       this.$refs.search.focus();
     },
-    clearSearch() {
+    clearSearch () {
       this.searchValue = "";
     },
-    setLocale(language) {
+    setLocale (language) {
       this.$i18n.locale = language;
       this.$router.push({ params: { lang: language } });
       this.isOpenLang = false;
+    },
+    scrollUp () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   },
   watch: {
@@ -758,6 +763,35 @@ export default {
             color: $c-e;
           }
         }
+      }
+    }
+  }
+  .upscroller {
+    display: none;
+
+    @media #{$r-min-m} {
+      position: fixed;
+      z-index: 25;
+      right: 30px;
+      bottom: 40px;
+      @include flexBox();
+      background-color: $c-yellow;
+      box-shadow: 0 1px 6px rgba($c-black, .75);
+      border-radius: 50%;
+      padding: 15px;
+      cursor: pointer;
+      transition: all .3s ease-in-out;
+      visibility: hidden;
+      opacity: 0;
+
+      &.show {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      i {
+        font-size: 24px;
+        color: $c-black;
       }
     }
   }

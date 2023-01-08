@@ -35,6 +35,7 @@
     "products": {
         "discount": "Discount",
         "special": "Special",
+        "available": "Available",
         "out_of_stock": "Out of stock",
         "add_cart": "Add to cart"
     }
