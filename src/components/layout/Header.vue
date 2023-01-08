@@ -8,9 +8,8 @@
           <a href="tel:061 5051095"><i class="fas fa-phone-alt"></i> 061 5051095</a>
         </div>
         <div class="header-top-socials">
-          <div class="text">Follow us:</div>
+          <div class="text">{{ $t("general.follow_us") }}:</div>
           <a class="icon facebook"><i class="fab fa-facebook"></i></a>
-          <a class="icon messenger"><i class="fab fa-facebook-messenger"></i></a>
           <a class="icon instagram"><i class="fab fa-instagram"></i></a>
           <a class="icon twitter"><i class="fab fa-twitter"></i></a>
         </div>
@@ -60,7 +59,7 @@
       <div class="wrapper">
         <div class="search">
         <!-- WATCH FOR V-MODEL, SOMETIMES NEEDS $EVENT.TARGET.VALUE -->
-          <input class="search-input" v-model="searchValue" type="text" ref="search" placeholder="Search..." />
+          <input class="search-input" v-model="searchValue" type="text" ref="search" :placeholder="`${$t('general.search')}...`" />
           <i v-show="searchValue.length > 0" @click="clearSearch" class="fas fa-times search-close"></i>
           <button @click="focusSearch" class="search-btn"><i class="fas fa-search"></i></button>
 

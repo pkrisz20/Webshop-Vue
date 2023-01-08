@@ -6,6 +6,35 @@
         "discounts": "Discounts",
         "gallery": "Gallery",
         "blog": "Blog",
-        "contact": "Contact"
+        "contact": "Contact",
+        "quick_links": "Quick links",
+        "support": "Support",
+        "FAQ": "Frequently asked questions",
+        "terms_of_use": "Terms of use",
+        "privacy_policy": "Privacy policy",
+        "gdpr": "Personal data management"
+    },
+    "general": {
+        "read_more": "Read more",
+        "search": "Search",
+        "follow_us": "Follow us",
+        "products": "Products",
+        "product_subtitle": "Some of our featured products",
+        "gallery": "Gallery",
+        "gallery_subtitle": "Some featured moment",
+        "blog": "Our blog",
+        "blog_subtitle": "You can see the events, what happened to us"
+    },
+    "categories": {
+        "pigs": "Pigs",
+        "chickens": "Chickens",
+        "geese": "Geese",
+        "hatcher_&_eggs": "Hatcher & Eggs"
+    },
+    "products": {
+        "discount": "Discount",
+        "special": "Special",
+        "out_of_stock": "Out of stock",
+        "add_cart": "Add to cart"
     }
 }

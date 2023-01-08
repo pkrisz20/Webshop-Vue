@@ -11,8 +11,8 @@
       <div class="bg-box">
         <h3 class="bg-box--title">We love the animals</h3>
         <p class="bg-box--subtitle">Smooth reliable, responsive rebgy, perfect portfolio, unique blog layout and many many options for you</p>
-        <a href="/about" class="bg-box_btn">About us</a>
-        <a href="/gallery" class="bg-box_btn bg-btn">Gallery</a>
+        <a href="/about" class="bg-box_btn">{{ $t("nav.about") }}</a>
+        <a href="/gallery" class="bg-box_btn bg-btn">{{ $t("nav.gallery") }}</a>
       </div>
     </section>
 
@@ -22,21 +22,6 @@
     <div class="more">
       <a class="more-button" href="/blogs"><i class="fas fa-arrow-right"></i> Visit Our Blog</a>
     </div>
-
-    <!-- <section class="mytabs">
-      <div class="wrapper">
-
-      <BlockTitle title="Tabs" subtitle="Here begins the tabs section" />
-        <Tabs class="tabs">
-          <Tab v-for="(tabItem, index) in this.tabContent" :key="index" :name="tabItem.title" :selected="tabItem.selected">
-            <p>{{ tabItem.text }}</p>
-          </Tab>
-        </Tabs>
-        <ul>
-          <li v-for="(item, index) in this.randomFact" :key="index">{{ item }}</li>
-        </ul>
-      </div>
-    </section> -->
   </div>
 </template>
 

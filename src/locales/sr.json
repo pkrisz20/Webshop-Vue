@@ -6,6 +6,35 @@
         "discounts": "Popusti",
         "gallery": "Galerija",
         "blog": "Blog",
-        "contact": "Kontakt"
+        "contact": "Kontakt",
+        "quick_links": "Linkove",
+        "support": "Pomoć",
+        "FAQ": "Najčešća pitanja",
+        "terms_of_use": "Opšti uslovi",
+        "privacy_policy": "Politika privatnosti",
+        "gdpr": "Upravljanje ličnim podacima"
+    },
+    "general": {
+        "read_more": "Saznajte više",
+        "search": "Pretraga",
+        "follow_us": "Pratite nas",
+        "products": "Proizvodi",
+        "product_subtitle": "Naši specialni proizvodi",
+        "gallery": "Galerija",
+        "gallery_subtitle": "Neki istaknuti momenat",
+        "blog": "Naš blog",
+        "blog_subtitle": "Šta se dešava sa nama"
+    },
+    "categories": {
+        "pigs": "Prase",
+        "chickens": "Pilići",
+        "geese": "Guske",
+        "hatcher_&_eggs": "Inkubator & Jaja"
+    },
+    "products": {
+        "discount": "Popust",
+        "special": "Istaknuto",
+        "out_of_stock": "Nema na lageru",
+        "add_cart": "Dodaj u korpu"
     }
 }

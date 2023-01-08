@@ -1,7 +1,7 @@
 <template>
     <section class="blogs">
         <div class="wrapper">
-            <BlockTitle title="Our Blog" subtitle="You can see the events, what happened to us" />
+            <BlockTitle :title="$t('general.blog')" :subtitle="$t('general.blog_subtitle')" />
             <Carousel
                 :navigationEnabled="true"
                 :paginationEnabled="true"
@@ -29,7 +29,7 @@
                             <span class="bottom separator">|</span>
                             <small class="bottom-count">{{ blog.commentsCount }} comment</small>
                         </div>
-                        <button class="btn">Read more</button>
+                        <button class="btn">{{ $t('general.read_more') }}</button>
                     </article>
                 </Slide>
             </Carousel>

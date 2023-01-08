@@ -1,7 +1,7 @@
 <template>
     <section class="gallery" v-if="images.length > 0">
         <div class="wrapper">
-            <BlockTitle title="Gallery" subtitle="Animals that are amazing" />
+            <BlockTitle :title="$t('general.gallery')" :subtitle="$t('general.gallery_subtitle')" />
             <div class="gallery-list">
                 <div class="gallery-list-card" v-for="(item, index) in images" :key="index">
                     <picture v-if="item.source">

@@ -41,13 +41,13 @@
             </div>
             <Tabs class="tabs">
                 <Tab name="Description" :selected="true">
-                    <p>{{ productDetails.desc1 }}</p>
+                    <p>{{ productDetails.description }}</p>
                 </Tab>
                 <Tab name="Parameters" :selected="false">
-                    <p>{{ productDetails.desc2 }}</p>
+                    <p>{{ productDetails.parameters }}</p>
                 </Tab>
                 <Tab name="Variants" :selected="false">
-                    <p>{{ productDetails.desc3 }}</p>
+                    <p>{{ productDetails.variants }}</p>
                 </Tab>
             </Tabs>
         </div>
@@ -74,9 +74,9 @@ import Tab from "@/components/tabs/Tab.vue";
                     isOnDiscount: true,
                     discount: 1500,
                     isAvailable: true,
-                    desc1: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
-                    desc2: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-                    desc3: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layoutIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
+                    description: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
+                    parameters: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+                    variants: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layoutIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
                 },
             }
         },
@@ -84,7 +84,6 @@ import Tab from "@/components/tabs/Tab.vue";
             addCart () {
                 this.quantityValue = typeof(this.quantityValue) !== "number" ? parseInt(this.quantityValue) : this.quantityValue;
                 if (this.quantityValue < 1) this.quantityValue = 1;
-                // console.log(this.quantityValue + " " + typeof(this.quantityValue));
             },
             increaseQuantity () {
                 this.quantityValue++;

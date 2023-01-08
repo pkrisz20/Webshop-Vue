@@ -6,6 +6,35 @@
         "discounts": "Kedvezmények",
         "gallery": "Galléria",
         "blog": "Blog",
-        "contact": "Kapcsolat"
+        "contact": "Kapcsolat",
+        "quick_links": "Gyors linkek",
+        "support": "Segítség",
+        "FAQ": "Gyakori kérdések",
+        "terms_of_use": "Általános szerződési feltételek",
+        "privacy_policy": "Adatvédelmi nyilatkozat",
+        "gdpr": "Személyes adatok kezelése"
+    },
+    "general": {
+        "read_more": "Olvasson tovább",
+        "search": "Keresés",
+        "follow_us": "Kövess minket",
+        "products": "Termékek",
+        "product_subtitle": "Néhány kiemelt termékünk",
+        "gallery": "Galléria",
+        "gallery_subtitle": "Néhány kiemelt pillanat",
+        "blog": "Blogunk",
+        "blog_subtitle": "Megnézheti mik történtek velünk"
+    },
+    "categories": {
+        "pigs": "Malacok",
+        "chickens": "Csirkék",
+        "geese": "Libák",
+        "hatcher_&_eggs": "Kelltető & Tojások"
+    },
+    "products": {
+        "discount": "Akció",
+        "special": "Kiemelt",
+        "out_of_stock": "Nincs raktáron",
+        "add_cart": "Kosárhoz adás"
     }
 }

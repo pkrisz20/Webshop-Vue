@@ -119,6 +119,7 @@
       .cart-btn {
         @include btn($c-a, $c-dark);
         width: 100%;
+        text-transform: uppercase;
 
         i {
           margin-right: 5px;
